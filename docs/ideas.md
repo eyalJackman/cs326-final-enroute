@@ -8,6 +8,6 @@
 
 # Team Overview
 - Eyal Jackman : eyalJackman
-- Manan Abbott: 
+- Manan Abbott: mananabbott
 - Simona Zilberberg: simonaz
 - Darsh Gondalia
