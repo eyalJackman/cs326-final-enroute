@@ -105,3 +105,49 @@
       url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
       url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
   }
+
+  .filter-child {
+      padding: 8px 20px;
+      color: #333333;
+      background-color: rgb(228, 222, 222);
+      border: 1px solid black;
+      cursor: pointer;
+      border-radius: 8px;
+      width: 250px;
+
+      /*Change the arrow */
+  }
+
+  .filter-child:focus,
+  .filter-child:hover {
+      color: rgb(228, 222, 222);
+      background-color: #333333;
+      outline: none;
+      border: 1px solid white;
+  }
+
+  .filter-child option {
+    background: azure;
+  }
+
+  .filters {
+      height: fit-content;
+      width: auto;
+  }
+
+  .search {
+      color: black;
+      background-color: aquamarine;
+      padding: 8px 15px;
+      border: 1px solid white;
+      border-radius: 8px;
+  }
+  .search:hover {
+    background-color: blue;
+  }
+
+  .slideshow-container {
+    max-width: 700px;
+    position: relative;
+    margin: auto;
+  }
