@@ -1,10 +1,9 @@
 .header{
     padding-left: 20px;
     padding-right: 20px;
-    background-color: #2d394b;
 }
 
-.footer{
+.footer , .header{
     background-color: #2d394b;
 }
 
@@ -20,12 +19,12 @@
     padding-right: 18px;
 }
 
-.center{
+/* .center{
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-}
+} */
 
 .card-row{
     padding-left: 100px;
@@ -45,12 +44,17 @@
     height: 3rem;
 }
 
+.card-star{
+    position: center; 
+    left: 20px
+}
+
 .card{
     width: 100%;
 }
 
-.subtitle-favorites{
-    padding-top: 20px;
+.pad-bottom-20{
+    padding-bottom: 20px;
 }
 
 .material-icons {
