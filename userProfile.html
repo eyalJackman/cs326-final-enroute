@@ -33,7 +33,7 @@
       <li>
         <a href="index.html" class="nav-link px-2 link-secondary">Home</a>
       </li>
-      <li><a href="#" class="nav-link px-2 link-dark">Favorites</a></li>
+      <li><a href="userProfile.html" class="nav-link px-2 link-dark">Favorites</a></li>
       <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
       <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
     </ul>
@@ -82,7 +82,42 @@
             </p>
           </div>
           <div class="col">
-            <div style="position: center; left: 20px">
+            <div class="card-star">
+              <!-- On click the filled star will be replaced with an Unfilled-->
+              <span
+                class="material-icons md-40 "
+                onclick="DoSomething();"
+                >star</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="row card-row">
+      <div class="card">
+        <div class="rounded card-body">
+          <div class="col">
+            <img src="/images/portugal.jpeg" alt="Img-destination" />
+          </div>
+          <div class="col-8">
+            <h5 class="card-title">Portugal</h5>
+            <p class="card-text">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. It was
+              popularised in the 1960s with the release of Letraset sheets
+              containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of
+              Lorem Ipsum.
+            </p>
+          </div>
+          <div class="col">
+            <div class="card-star">
               <!-- On click the filled star will be replaced with an Unfilled-->
               <span
                 class="material-icons md-40 card-star"
@@ -117,7 +152,7 @@
             </p>
           </div>
           <div class="col">
-            <div style="position: center; left: 20px">
+            <div class="card-star">
               <!-- On click the filled star will be replaced with an Unfilled-->
               <span
                 class="material-icons md-40 card-star"
@@ -129,42 +164,7 @@
         </div>
       </div>
     </div>
-    <div class="card-divider"></div>
-    <div class="row card-row">
-      <div class="card">
-        <div class="rounded card-body">
-          <div class="col">
-            <img src="/images/portugal.jpeg" alt="Img-destination" />
-          </div>
-          <div class="col-8">
-            <h5 class="card-title">Portugal</h5>
-            <p class="card-text">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </p>
-          </div>
-          <div class="col">
-            <div style="position: center; left: 20px">
-              <!-- On click the filled star will be replaced with an Unfilled-->
-              <span
-                class="material-icons md-40 card-star"
-                onclick="DoSomething();"
-                >star</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p style="padding-bottom: 20px"></p>
+    <p class="pad-bottom-20"></p>
   </body>
   <footer
     class="d-flex flex-wrap align-items-center justify-content-center py-3 border-bottom border-top footer"
