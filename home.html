@@ -18,26 +18,13 @@
 
     <!-- Google Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!--Include Files Script-->
+    <script src="https://unpkg.com/htmlincludejs"></script>
 
     <title>enRoute</title>
-  </head>
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom header">
-        <img alt="Logo" class="img-thumbnail float-left">
-  
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="index.html" class="nav-link px-2 link-secondary">Home</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Favorites</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
-        </ul>
-  
-        <div class="float-right">
-            <span class="material-icons md-36 md-dark account-icon">account_circle</span>
-            <button type="button" class="btn btn-outline-primary me-2">Login</button>
-            <button type="button" class="btn btn-primary">Sign-up</button>
-        </div>
-    </header>
-    
+  </head> 
+  <include src="header.html"></include>
   <body>
             <center>
             <div class="filters">
@@ -73,7 +60,7 @@
                     </select>
                 </form>
                 <br>
-                <center><button type="submit" form="filterForm" value="Submit" class="search">Search</button></center>
+                <center><a href="index.html" type="submit" form="filterForm" value="Submit" class="search">Search</a></center>
             </div>
 
             <div>
@@ -116,3 +103,5 @@
             -->
             </center>
   </body>
+  <include src="footer.html"></include>
+</html>
