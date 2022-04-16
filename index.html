@@ -18,30 +18,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/htmlincludejs"></script>
     <title>Document</title>
   </head>
-  <header
-    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom header"
-  >
-    <img alt="Logo" class="img-thumbnail float-left" />
-
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li>
-        <a href="index.html" class="nav-link px-2 link-secondary">Home</a>
-      </li>
-      <li><a href="#" class="nav-link px-2 link-dark">Favorites</a></li>
-      <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-      <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
-    </ul>
-
-    <div class="float-right">
-      <span class="material-icons md-36 md-dark account-icon"
-        >account_circle</span
-      >
-      <button type="button" class="btn btn-outline-primary me-2">Login</button>
-      <button type="button" class="btn btn-primary">Sign-up</button>
-    </div>
-  </header>
+  <include src="header.html"></include>
   <body>
     <div class="container-fluid">
       <div class="flex-row">
@@ -217,4 +197,5 @@
       </div>
     </div>
   </body>
+  <include src="footer.html"></include>
 </html>
