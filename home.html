@@ -29,39 +29,15 @@
             <center>
             <div class="filters">
                 <h1>Welcome, please select the kind of vacation you are planning!</h1>
+                <br>
             </div>
 
             <div class="filter-contents">
-                <p>
-                <form id="filterForm">
-                    <select class="filter-child" name="region" id="region" >
-                        <option disabled selected>Region</option>
-                        <option value="SCA">South-Central Asia</option>
-                        <option value="Balk">Balkan Peninsula</option>
-                        <option value="NAf">Northern Africa</option>
-                        <option value="Oceania">Oceania</option>
-                        <option value="CAf">Central Affrica</option>
-                        <option value="Caribbean">Caribbean</option>
-                        <option value="WAsia">Western Asia</option>
-                    </select>
-                    <select class="filter-child" name="Weather" id="weather">
-                        <option disabled selected>Weather</option>
-                        <option value="cold">Cold</option>
-                        <option value="hot">Hot</option>
-                        <option value="tropical">Tropical</option>
-                        <option value="...">...</option>
-                    </select>
-                    <select class="filter-child" value="Vacation type" name="Vacation Type" id="region" >
-                        <option disabled selected>Vacation Type</option>
-                        <option value="1D">1 Day</option>
-                        <option value="LongWeekend">Long weekend</option>
-                        <option value="SpringBreak">Spring break</option>
-                        <option value="ThanksBreak">Thanksgiving break</option>
-                    </select>
-                </form>
+                  <include src="filterBar.html"></include>
                 <br>
                 <center><a href="index.html" type="submit" form="filterForm" value="Submit" class="search">Search</a></center>
-            </div>
+                <hr/>
+              </div>
 
             <div>
                 <h1>Discover the top destinations</h1>

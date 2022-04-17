@@ -110,6 +110,10 @@
       url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
   }
 
+  #filterBar{
+      padding-bottom: 20px;
+  }
+
   .filter-child {
       padding: 8px 20px;
       color: #333333;
