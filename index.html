@@ -19,108 +19,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/htmlincludejs"></script>
-    <title>Document</title>
+    <title>enRoute</title>
   </head>
   <include src="header.html"></include>
   <body>
-    <div class="container-fluid">
-      <div class="flex-row">
-        <div class="col-md-12">
-          <h3>Current Filters</h3>
-          <br />
-          <div class="flex-row">
-            <div class="col-md-12">
-              <div class="row mx-md">
-                <div class="col-md-3">
-                  <div class="dropdown">
-                    <button
-                      class="btn btn-primary dropdown-toggle"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-toggle="dropdown"
-                    >
-                      <span class="align-text-bottom">Florida</span>
-                      <span class="material-icons"> location_on </span>
-                    </button>
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                    >
-                      <a class="dropdown-item disabled" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="dropdown">
-                    <button
-                      class="btn btn-primary dropdown-toggle"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-toggle="dropdown"
-                    >
-                      <span class="align-text-bottom">Summer</span>
-                      <span class="material-icons"> event </span>
-                    </button>
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                    >
-                      <a class="dropdown-item disabled" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="dropdown">
-                    <button
-                      class="btn btn-primary dropdown-toggle"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-toggle="dropdown"
-                    >
-                      <span class="align-text-bottom">Warm</span>
-                      <span class="material-icons"> light_mode </span>
-                    </button>
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                    >
-                      <a class="dropdown-item disabled" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="dropdown">
-                    <button
-                      class="btn btn-primary dropdown-toggle"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-toggle="dropdown"
-                    >
-                      <span class="align-text-bottom">Spring Break</span>
-                      <span class="material-icons"> flight_takeoff </span>
-                    </button>
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                    >
-                      <a class="dropdown-item disabled" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr />
+    <include src="filterBar.html"></include>
+  </hr>
       <div class="row mx-md">
         <div class="col-md-3">
           <div class="dropdown">
