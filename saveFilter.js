@@ -1,3 +1,5 @@
+import { readFile, writeFile } from 'fs/promises';
+
 const regionOption = document.getElementById('region');
 const seasonOption = document.getElementById('season');
 const weatherOption = document.getElementById('weather');
@@ -10,28 +12,15 @@ searchButton.addEventListener('click', async (e) => {
     const weather = weatherOption.value;
     const vacationType = vacationTypeOption.value;
     let filterObj = {region: region, season: season, weather: weather, vacationType: vacationType};
+    let data = await fetch(`http://localhost:3000/filters`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({name: name, word: word, score: score}),
+      });
     // const json = await crud.createObj(filterObj);
     // output.innerHTML = JSON.stringify(json);
     // await allCounters();
   });
-
-  async function basicServer(request, response) {
-    const parsedURL = url.parse(request.url, true);
-    const options = parsedURL.query;
-    const pathname = parsedURL.pathname;
-    const method = request.method;
-  
-    // if (method == 'POST' && pathname.startsWith('/create')) {
-    //   createObj(response, options);
-    // } else {
-    //   response.writeHead(404, headerFields);
-    //   response.write(JSON.stringify({ error: 'Not Found' }));
-    //   response.end();
-    // }
-  }
-  
-  // Start the server on port 3000.
-  http.createServer(basicServer).listen(3000, () => {
-    console.log('Server started on port 3000');
-  });
-
