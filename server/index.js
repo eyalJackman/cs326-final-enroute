@@ -57,6 +57,6 @@ app.all("*", async(request, response) => {
 });
 
 // Start the server on port 3000.
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log(`Server started on http://localhost:${port}`);
 });
