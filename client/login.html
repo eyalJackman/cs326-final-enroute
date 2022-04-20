@@ -17,9 +17,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a8cd7ce14c.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://unpkg.com/htmlincludejs"></script>
   </head>
+  <include src="header.html"></include>
   <body>
     <style>
         * {
@@ -238,12 +239,6 @@ nav ul li span:nth-child(4) {
             position: fixed;
             bottom: 0;
             width: 100%;
-            background-color: #2d394b;
-        }
-        .header{
-            padding-left: 20px;
-            padding-right: 20px;
-            background-color: #2d394b;
         }
         .li:hover{
             color: #551A8B;
@@ -286,26 +281,7 @@ nav ul li span:nth-child(4) {
 
     </style>
     <div class = "container-fluid">
-        <!--row for header bar-->
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom header">
-            <img alt="Logo" class="img-thumbnail float-left">
-      
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="index.html" class="nav-link px-2 link-secondary" style="color: #0000EE;">Home</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark"style="color: #0000EE;">Favorites</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark"style="color: #0000EE;">FAQs</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark"style="color: #0000EE;">About</a></li>
-            </ul>
-      
-            <div class="float-right">
-                <span class="material-icons-outlined">
-                    account_circle
-                    </span>
-                <button type="button" class="btn btn-outline-primary me-2">Login</button>
-                <button type="button" class="btn btn-primary">Sign-up</button>
-            </div>
-        </div>
-        </header>
+        
         <!--Login form-->
         
         <div class="form__group field">
