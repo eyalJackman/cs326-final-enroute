@@ -1,5 +1,5 @@
 const information = document.getElementById("information");
-
+import data from "./mockDatabase.js";
 const url =
     "https://en.wikipedia.org/w/api.php?&origin=*&action=opensearch&search=bull%20frogs&limit=5";
 
@@ -20,32 +20,16 @@ const addDestination = async(destination) => {
     const response = await fetch(url);
 
     let extract;
-    await response
-        .json()
-        .then((obj) => {
-            const pages = obj["query"]["pages"];
-            for (entry in pages) {
-                extract = pages[entry]["extract"];
-            }
-        })
-        .then(
-            (document.getElementById("information").innerHTML =
-                JSON.stringify(extract))
-        );
-    // let extract;
-    // for (const entry of pages) {
-    //     extract = pages[entry]["extract"];
-    // }
-    // let id;
+    await response.json().then((obj) => {
+        const pages = obj["query"]["pages"];
+        for (const entry in pages) {
+            extract = pages[entry]["extract"];
+        }
+    });
+
     if (response.ok) {
-        //     id = await response.json();
-        //     const content = await fetch(pageId(id));
-        //     if (content.ok) {
-        //         document.getElementById("information").innerHTML =
-        //             content["query"]["pages"][id]["extract"];
-        //     }
         document.getElementById("information").innerHTML = JSON.stringify(extract);
     }
-    // return "test";
 };
-setTimeout(() => addDestination("Boston"), 1000);
+const randName = data[Math.floor(Math.random() * data.length)]["name"];
+addDestination(randName);
