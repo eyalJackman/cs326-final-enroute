@@ -52,7 +52,7 @@ body{
  outline:none;
  border-bottom:1px solid #e74c3c;	
 }
-.btn{
+.btn1{
 	color:#fff;
 	background-color: red;
 	outline: none;
@@ -66,7 +66,7 @@ body{
 	position: relative;
     margin-left: 55px;
 }
-.btn:hover{
+.btn1:hover{
     background-color:#e74c3c;
 	transition: 0.3s;
 }
