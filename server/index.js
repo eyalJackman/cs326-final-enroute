@@ -43,7 +43,7 @@ app.use(logger("dev"));
 app.use("/client", express.static("client"));
 
 app.get("/", (req, res) => {
-    res.sendFile("./home.html");
+    res.sendFile("../client/home.html");
 });
 
 app.post("/saveFilter", (req, res) => {
