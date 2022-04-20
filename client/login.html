@@ -7,9 +7,10 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    
-    <!--Include Files Script-->
-    <script src="https://unpkg.com/htmlincludejs"></script>
+
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <title>Login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
@@ -19,15 +20,160 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
   </head>
-  <include src="header.html"></include>
   <body>
     <style>
         * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
+             
         }
-    
+        
+        .form__group {
+        position: relative;
+        padding: 15px 0 0;
+        top: 150px;
+        width: 25%;
+        left: 570px;
+        }
+
+        .form__field {
+        font-family: inherit;
+        width: 100%;
+        border: 0;
+        border-bottom: 2px solid #2d394b;
+        outline: 0;
+        font-size: 1.3rem;
+        color: #2d394b;
+        padding: 7px 0;
+        background: transparent;
+        transition: border-color 0.2s;
+        }
+        .form__field::placeholder {
+        color: transparent;
+        }
+        .form__field:placeholder-shown ~ .form__label {
+        font-size: 1.3rem;
+        cursor: text;
+        top: 25px;
+        }
+
+        .form__label {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: 1rem;
+        color: #9b9b9b;
+        }
+
+        .form__field:focus {
+        padding-bottom: 6px;
+        font-weight: 700;
+        border-width: 1px;
+        border-image: linear-gradient(to right, #9b9b9b, #9b9b9b);
+        border-image-slice: 1;
+        }
+        .form__field:focus ~ .form__label {
+        position: absolute;
+        top: -7px;
+        display: block;
+        transition: 0.2s;
+        font-size: 1rem;
+        color: #1f1e1e;
+        font-weight: 700;
+        }
+        
+        .pass {
+            position: relative;
+            top: 20px;
+        }
+        nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    --c: rgb(0, 216, 51);
+    color: var(--c);
+    font-size: 16px;
+    border: 0.2em solid var(--c);
+    border-radius: 3em;
+    width: 12em;
+    height: 3em;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 2.75em;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.5s;
+    margin: 1em;
+}
+
+nav ul li span {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    background-color: var(--c);
+    transform: translateY(150%);
+    border-radius: 50%;
+    left: calc((var(--n) - 1) * 25%);
+    transition: 0.5s;
+    transition-delay: calc((var(--n) - 1) * 0.1s);
+    z-index: -1;
+}
+
+nav ul li:hover {
+    color: white;
+}
+
+nav ul li:hover span {
+    transform: translateY(0) scale(2);
+}
+
+nav ul li span:nth-child(1) {
+    --n: 1;
+}
+nav ul li span:nth-child(2) {
+    --n: 2;
+}
+
+nav ul li span:nth-child(3) {
+    --n: 3;
+}
+
+nav ul li span:nth-child(4) {
+    --n: 4;
+}
+.bttnz {
+    position: relative;
+    left: 650px;
+    top: 190px;
+}
+.api {
+    position: relative;
+    left: 670px;
+    top: 250px;
+}
+.sign_extra {
+    color: #2d394b;
+    font-size: large;
+    font-weight: bolder;
+    position: relative;
+    left: 695px;
+    top: 150px;
+
+}
+
+
+/* reset input */
+
+
         .loginrow {
             background: white;
             border-radius: 30px;
@@ -65,16 +211,19 @@
             font-size: 3rem;
             color: rgb(66, 103, 178);
             cursor: pointer;
+            margin-right: 20px;
         }
         .fa-google{
             font-size: 3rem;
             color: #0F9D58;
             cursor: pointer;
+            margin-right: 20px;
         }
         .fa-instagram{
             font-size: 3rem;
             color: #7a3ca3;
             cursor: pointer;
+            margin-right: 20px;
         }
         .fa-instagram:hover{
             color: #552a72;
@@ -137,44 +286,59 @@
 
     </style>
     <div class = "container-fluid">
-        <div class="text-center">
-            <!-- row for login info -->
-            <div class = "row">
-                <!--Login form-->
-                <div class = "loginrow">
-                    <div class="col-lg-12 py-2"><h1>Sign in</h1></div>
-                    <form>
-                        <div class="form-row">
-                            <div class="col-lg-12">
-                                <input type="text" placeholder="Username" class="details">
-                            </div>
-                        </div>
-                        <div class="form-row py-1 pt-3">
-                            <div class="col-lg-12">
-                                <input type="password" placeholder="Password" class="details">
-                            </div>
-                        </div>
-                        <div class="form-col">
-                            <div class="checkbox">
-                                <label style="font-size: small; position: relative; right: 135px;"><input type="checkbox" value="remember-me">Remember me</label>
-                            </div>
-                        </div>
-                        <div class="form-row py-3 pt-3">
-                            <div class="col-lg-12">
-                                <button class="btn1">Login</button>
-                            </div>
-                        </div>
-                        <div class="form-col">
-                            <a href="#" class="nav-link px-2 link-dark" style="font-size: small; color: blue;">Forgot password?</a>
-                        </div>
-                    </form>
-                    <p style="font-size: smaller;">or login with</p>
-                    <span><i class="fa-brands fa-facebook"></i></span>
-                    <span><i class="fa-brands fa-google"></i></span>
-                    <span><i class="fa-brands fa-instagram"></i></span>
-                </div>
+        <!--row for header bar-->
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom header">
+            <img alt="Logo" class="img-thumbnail float-left">
+      
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="index.html" class="nav-link px-2 link-secondary" style="color: #0000EE;">Home</a></li>
+              <li><a href="#" class="nav-link px-2 link-dark"style="color: #0000EE;">Favorites</a></li>
+              <li><a href="#" class="nav-link px-2 link-dark"style="color: #0000EE;">FAQs</a></li>
+              <li><a href="#" class="nav-link px-2 link-dark"style="color: #0000EE;">About</a></li>
+            </ul>
+      
+            <div class="float-right">
+                <span class="material-icons-outlined">
+                    account_circle
+                    </span>
+                <button type="button" class="btn btn-outline-primary me-2">Login</button>
+                <button type="button" class="btn btn-primary">Sign-up</button>
             </div>
         </div>
+        </header>
+        <!--Login form-->
+        
+        <div class="form__group field">
+            <input type="input" class="form__field" placeholder="Name" name="name" id='name' required />
+            <label for="name" class="form__label">Email Address</label>
+          </div>
+        
+          <div class="pass">
+          <div class="form__group field">
+            <input type="password" class="form__field" placeholder="Name" name="name" id='name' required />
+            <label for="name" class="form__label">Password</label>
+          </div>
+        </div>
+        
+
+        <div class="bttnz">
+            <nav>
+                <ul>
+                  <li>
+                    Submit
+                    <span></span><span></span><span></span><span></span>
+                  </li>
+                  </ul>
+                  </nav>
+        </div>
+        
+        <div class="api">
+        <span><i class="fa-brands fa-facebook"></i></span>
+        <span><i class="fa-brands fa-google"></i></span>
+        <span><i class="fa-brands fa-instagram"></i></span>
+    </div>
+    <p class="sign_extra">or sign-in using</p>
+
         <!--row for footer bar-->
             <footer class="d-flex flex-wrap align-items-center justify-content-center py-3 border-bottom border-top footer">
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
@@ -191,5 +355,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     
   </body>
-  <include src="footer.html"></include>
 </html>
