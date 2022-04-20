@@ -24,7 +24,7 @@ function saveToFilterFile(path) {
     const data = { region, season, weather, vacationType};
     const filters = await readFilters(path);
     filters.push(data);
-    writeFile(path, JSON.stringify(scores), 'utf8');
+    writeFile(path, JSON.stringify(filters), 'utf8');
   };
 }
 const saveFilter = saveToFilterFile(TEMP_FILTER_FILE);
@@ -32,8 +32,6 @@ const saveFilter = saveToFilterFile(TEMP_FILTER_FILE);
 // Create the Express app and set the port number.
 const app = express();
 const port = 3000;
-// const path = require('path');
-
 
 // Add Middleware
 app.use(express.json());
@@ -49,8 +47,8 @@ app.get('/', (req, res) => {
 })
 
 app.post('/saveFilter', (req, res) => {
-    // const filter = req.body;
-    // saveFilter(filter.region,filter.season,filter.weather,filter.vacationType);
+    const filter = req.body;
+    saveFilter(filter.region,filter.season,filter.weather,filter.vacationType);
     res.status(200).json({"status": "success"});
 });
 
