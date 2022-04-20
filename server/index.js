@@ -32,6 +32,8 @@ const saveFilter = saveToFilterFile(TEMP_FILTER_FILE);
 // Create the Express app and set the port number.
 const app = express();
 const port = 3000;
+// const path = require('path');
+
 
 // Add Middleware
 app.use(express.json());
@@ -40,16 +42,24 @@ app.use(express.urlencoded({ extended: false }));
 //Add the morgan middleware to the app.
 app.use(logger('dev'));
 // Add the express.static middleware to the app.
-app.use(express.static('public'));
+app.use('/client', express.static('client'));
+
+app.get('/', (req, res) => {
+  res.sendFile("GET Request Called")
+})
 
 app.post('/saveFilter', (req, res) => {
-    const filter = req.body;
+    // const filter = req.body;
     // saveFilter(filter.region,filter.season,filter.weather,filter.vacationType);
     res.status(200).json({"status": "success"});
 });
+
+app.all('*', async (request, response) => {
+  response.status(404).send(`Not found: ${request.path}`);
+});
   
   // Start the server on port 3000.
-  app.listen(port, () => {
-    console.log(`Server started on http://localhost:${port}`);
-  });
+app.listen(port, () => {
+  console.log(`Server started on http://localhost:${port}`);
+});
 
