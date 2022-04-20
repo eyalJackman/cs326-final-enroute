@@ -10,13 +10,31 @@ const url =
  * @description This will render the first 100 words and an image of whatever destination is said to it. This will be sent to desination.html
  */
 const addDestination = async(destination) => {
-    const correctFormat = destination.split("").join("%20");
-    const url = `https://en.wikipedia.org/w/api.php?action=query&titles=${correctFormat}&limit=1`;
-    const response = await fetch(url);
+    const correctFormat = destination.split(" ").join("%20");
+    const url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&titles=${correctFormat}`;
+    const response = await fetch(url, {
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        },
+    });
+    const pageId = (curid) =>
+        `https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&pageids=${curid}`;
+    let id;
     if (response.ok) {
-        const data = await response.json();
-        document.getElementById("information").innerHTML = JSON.stringify(data);
+        id = await response.json();
+        const content = await fetch(pageId(id), {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).catch(console.log);
+        if (content.ok) {
+            document.getElementById("information").innerHTML =
+                content["query"]["pages"][id]["extract"];
+        }
+        // document.getElementById("information").innerHTML = JSON.stringify(data);
     }
+    // return "test";
 };
-
-addDestination("punta cana");
+// setTimeout(() => addDestination("Boston"), 1000);
