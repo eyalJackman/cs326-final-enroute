@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">     
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>     
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+        </script>     
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+        </script>
+        <!-- Google Icons-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <title>Contact Us</title>
+        <link href="contact.css" rel="stylesheet" />
+        <link href="styles.css" rel="stylesheet" />
+        <script src="https://unpkg.com/htmlincludejs"></script>
+    </head>
+
+    <include src="header.html"></include>
+
+    <body>
+        <div class="box">
+            <form>
+                <span class="text-center">CONTACT US</span>
+            <div class="input-container">
+                <input type="text" required="" id="name"/>
+                <label>Full Name</label>		
+            </div>
+            <div class="input-container">		
+                <input type="mail" required="" id="email"/>
+                <label>Email</label>
+            </div>
+            <div class="input-container">		
+                <input type="tel" required="" id="phone"/>
+                <label>Phone Number</label>
+            </div>
+            <div class="input-container">		
+                <textarea required="" id="message"></textarea>
+                <label>Message</label>
+            </div>
+                <button type="submit" class="btn">submit</button>
+        </form>	
+        </div>
+    </body>
+    <footer class="d-flex flex-wrap align-items-center justify-content-center py-3 border-bottom border-top footer">
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="#" class="nav-link px-2 link-secondary">Feedback</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Contact Us</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Terms of Polocy</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Follow Us</a></li>
+        </ul>
+        </footer>
+</html>
