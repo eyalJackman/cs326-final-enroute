@@ -39,8 +39,9 @@ app.use(express.urlencoded({ extended: false }));
 
 //Add the morgan middleware to the app.
 app.use(logger("dev"));
+
 // Add the express.static middleware to the app.
-app.use("/client", express.static("client"));
+app.use(express.static("client"));
 
 app.get("/", (req, res) => {
     res.sendFile("client/home.html", { root: "./" });
