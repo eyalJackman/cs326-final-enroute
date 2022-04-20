@@ -1,4 +1,4 @@
-export default [{
+const data = [{
         name: "Boston",
     },
     {
@@ -8,3 +8,5 @@ export default [{
         name: "Sao Paulo",
     },
 ];
+
+export default data;
