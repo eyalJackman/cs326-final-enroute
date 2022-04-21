@@ -13,9 +13,12 @@
 
 ![API Flowchart](https://i.imgur.com/lYQwD6Y.jpg)
 # Pictures of Interfaces
+![](https://i.imgur.com/mIJvjgT.jpg)
+- Current saved state of filter, recorded by search button.
 ![](https://i.imgur.com/uB9YLra.jpg)
-
+- Renders the names, images, and descriptions of a requested destination. Currently it chooses one by random from a mock database.
 ![](https://i.imgur.com/6dg6Tpe.jpg)
+- 
 ![](https://i.imgur.com/4D8f1M7.png)
 - Used HTML, bootstrap and CSS to create a simple login page for our website. 
 ![](https://i.imgur.com/Ro68Qtm.png)
@@ -47,3 +50,9 @@
   - login.html
   - login.css
   - Assisted in Heroku setup
+
+- simonaz
+  - index.js
+  - filterBar.html
+  - tempFilter.json
+  - saveFilter.js
