@@ -1,4 +1,4 @@
-import data from "../mockDatabase.js";
+import data from "./mockDatabase.js";
 
 const information = document.getElementById("destination_information");
 const img = document.getElementById("destination_image");
