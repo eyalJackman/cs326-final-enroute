@@ -12,6 +12,12 @@
   - different functions for the results
 
 ![API Flowchart](https://i.imgur.com/lYQwD6Y.jpg)
+# Pictures of Interfaces
+![Image description](https://i.imgur.com/a/hHUO15M)
+![](https://i.imgur.com/uB9YLra.jpg)
+![](https://i.imgur.com/6dg6Tpe.jpg)
+![](https://i.imgur.com/6F9XW9Q.png)
+![](https://i.imgur.com/Ro68Qtm.png)
 
 # Link to Heroku App
 
