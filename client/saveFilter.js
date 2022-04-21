@@ -33,7 +33,7 @@ searchButton.addEventListener('click', () => {
   });
 
   
-searchButton.addEventListener("click", ()=> {
+searchButton.addEventListener("click", (event) => {
   //create class instance with region season weather vacation type paramaters
     //rendersearch results using element id 'col-md-3 text-center' here?
   const regionOption = document.getElementById('region');
@@ -46,9 +46,10 @@ searchButton.addEventListener("click", ()=> {
   let season = seasonOption.value;
   let weather = weatherOption.value;
   let vacationType = vacationTypeOption.value;
-
+  console.log("this work");
   const search = new SearchResults();
-  render(document.getElementById("searchResults"));
+  search.render(document.getElementById("searchResults"));
+  event.preventDefault();
 });
 
 // const favButton = document.getElementById("favorite");
