@@ -47,6 +47,14 @@ app.get("/", (req, res) => {
     res.sendFile("client/home.html", { root: "./" });
 });
 
+// app.get("/client/destination", (req, res) => {
+//     res.send("Test");
+//     // const params = req.params;
+//     // const { name } = params;
+//     // await destinationView.addDestination(name); (Changes destination.html and then uploads it to the DOM)
+//     // res.sendFile("../client/destination.html");
+// });
+
 app.post("/saveFilter", (req, res) => {
     const filter = req.body;
     saveFilter(filter.region, filter.season, filter.weather, filter.vacationType);

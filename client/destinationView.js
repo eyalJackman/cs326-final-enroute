@@ -36,3 +36,10 @@ const addDestination = async(destination) => {
 };
 const randDest = data[Math.floor(Math.random() * data.length)];
 addDestination(randDest);
+
+/*
+    For now, it just works with destionation.html, showing random information from 3 places. 
+    This will be expanded to return an HTML file depending on the location, using the database later on.
+*/
+
+export default addDestination;
