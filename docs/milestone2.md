@@ -6,6 +6,10 @@
 - Save Filter:
   - `POST /saveFilter`
   - Saves the current status of the filter using the dropdowns for `region`, `season`, `weather`, and `vacationType`
+  - calls SearchResults which renders a list of destinations
+- Search Results: 
+  - Search results class with list of top 10 destinations
+  - different functions for the results
 
 ![API Flowchart](https://i.imgur.com/lYQwD6Y.jpg)
 
@@ -19,3 +23,10 @@
   - destinationView.js, destination.html, destination.css
   - crud.js
   - index.js tweaks/Heroku App Integration
+
+- darshGondalia:
+  - searchResults.js
+  - saveFilter.js
+  - index.js tweaks/adjusments
+  - database.js Description
+  - saveFilter.js
