@@ -41,12 +41,12 @@ export class SearchResults{
             
             //add pic of element at index 0 in destinations list
             const pic = document.createElement("img");
-            pic.src = "images/cs326_proj1_ftLaud.jpg";
-            pic.classList.add("mx-auto rounded d-block");
+            //pic.src = "images/cs326_proj1_ftLaud.jpg";
+            pic.classList.add("image");
             //add to favorites button
-            // const button = document.createElement('button');
-            // button.id = "favorite";
-            // button.textContent = "Add to favorites";
+            const button = document.createElement('button');
+            button.id = "favorite";
+            button.textContent = "Add to favorites";
 
             body.appendChild(pic);
 
