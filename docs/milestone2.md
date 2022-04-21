@@ -17,7 +17,9 @@
 
 ![](https://i.imgur.com/6dg6Tpe.jpg)
 ![](https://i.imgur.com/4D8f1M7.png)
+- Used HTML, bootstrap and CSS to create a simple login page for our website. 
 ![](https://i.imgur.com/Ro68Qtm.png)
+- index.html file is changed from searchResults.js, after rendering the information from database.js
 
 # Link to Heroku App
 
