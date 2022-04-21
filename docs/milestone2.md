@@ -14,8 +14,9 @@
 ![API Flowchart](https://i.imgur.com/lYQwD6Y.jpg)
 # Pictures of Interfaces
 ![](https://i.imgur.com/uB9YLra.jpg)
+
 ![](https://i.imgur.com/6dg6Tpe.jpg)
-![](https://i.imgur.com/6F9XW9Q.png)
+![](https://i.imgur.com/4D8f1M7.png)
 ![](https://i.imgur.com/Ro68Qtm.png)
 
 # Link to Heroku App
