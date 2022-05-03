@@ -64,8 +64,8 @@ export class Database{
         return res;
     }
     //add destination entires
-    async createDestination(loc, img, region, weather, season, duration, activites){
-        const res = await this.collection_destinations.insertOne({location: loc, image: img, region: region, weather: weather, season: season, duration: duration, activites: activites});
+    async createDestination(loc, img, des, region, weather, season, duration, activites){
+        const res = await this.collection_destinations.insertOne({location: loc, image: img, discription: des, region: region, weather: weather, season: season, duration: duration, activites: activites});
         return res;
     }
     //find destination
@@ -109,7 +109,23 @@ export class Database{
         const res = await this.collection_users.findOne({_id: id});
         return res.favorites;
     }
-
+    //fetch search results
+    async search(region, weather, season, duration){
+        const res = await this.collection_destinations.find({region: region, weather: weather, season: season, duration: duration}).toArray();
+        return res;
+    }
+    // fetch updated results based on activites
+    async activitesSearch(region, weather, season, duration, act){
+        const res = await this.collection_destinations.find({region: region, weather: weather, season: season, duration: duration}).toArray();
+        for(let i = 0; 0 < res.length; i++){
+            for(let j = 0; j < act.length; j++){
+                if(!res[i].activites.includes(act[j])){
+                    res.remove(res[i]);
+                }
+            }
+        }
+        return res;
+    }
     //add to favorites method, will add the destination name to the users favorites table;
     //fetch favorites method, will fetch the information of the destinations based 
     // on the list of favorites in the partivular user's table
