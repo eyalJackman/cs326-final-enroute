@@ -65,7 +65,7 @@ export class Database{
     }
     //add destination entires
     async createDestination(loc, img, des, region, weather, season, duration, activites){
-        const res = await this.collection_destinations.insertOne({location: loc, image: img, discription: des, region: region, weather: weather, season: season, duration: duration, activites: activites});
+        const res = await this.collection_destinations.insertOne({location: loc, image: img, description: des, region: region, weather: weather, season: season, duration: duration, activites: activites});
         return res;
     }
     //find destination
