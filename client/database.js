@@ -25,31 +25,31 @@ export class Database{
     }
     //add a new user
     async createUser(id, password, name, email){
-        const res = await this.collection_users.insertOne({_id: id, password, name, email});
+        const res = await this.collection_users.insertOne({_id: id, password: password, name: name, email: email});
         return res;
     }
     //read a user
     async readUser(id){
-        const res = await this.collection_users.findOne({_id: id});
+        const res = await this.collection_users.findOne({ _id: id });
     }
     // update user name
     async updateUserName(id, name){
         const res = await this.collection_users.updateOne(
-            {_id: id }, {$set: {name}}
+            {_id: id }, {$set: {name: name}}
         );
         return res;
     }
     // update user email
     async updateUserEmail(id, email){
         const res = await this.collection_users.updateOne(
-            {_id: id }, {$set: {email}}
+            {_id: id }, {$set: {email: email}}
         );
         return res;
     }
     // update user password
-    async updateUserName(id, password){
+    async updateUserPassword(id, password){
         const res = await this.collection_users.updateOne(
-            {_id: id }, {$set: {password}}
+            {_id: id }, {$set: {password: password}}
         );
         return res;
     }
@@ -63,7 +63,52 @@ export class Database{
         const res = await this.collection_users.find({}).toArray();
         return res;
     }
-    
+    //add destination entires
+    async createDestination(loc, img, region, weather, season, duration, activites){
+        const res = await this.collection_destinations.insertOne({location: loc, image: img, region: region, weather: weather, season: season, duration: duration, activites: activites});
+        return res;
+    }
+    //find destination
+    async findDestination(loc){
+        const res = await this.collection_destinations.findOne({location:loc});
+        return res;
+    }
+    // delete a destination
+    async deleteDestination(loc){
+        const res = await this.collection_destinations.deleteOne({location: loc});
+        return res;
+    }
+    // add an activity to destination
+    async addActivity(loc, new_act){
+        const res = await this.collection_destinations.updateOne(
+            {loc: loc},
+            {$push: {activites: new_act}}
+            );
+            return res;
+    }
+    //remove an activity from destination
+    async removeActivity(loc, act){
+        const res = await this.collection_destinations.updateOne({loc: loc}, {$pull: {activites: act}});
+        return res;
+    }
+    // read all destinations
+    async readAllDestinations(){
+        const res = await this.collection_destinations.find({}).toArray();
+        return res;
+    }
+    //add to favorites
+    async addToFavorites(id, loc){
+        const res = await this.collection_users.updateOne(
+            {_id: id},
+            {$push: {favorites: loc}}
+        );
+        return res;
+    }
+    //find favorties
+    async findFavorites(id){
+        const res = await this.collection_users.findOne({_id: id});
+        return res.favorites;
+    }
 
     //add to favorites method, will add the destination name to the users favorites table;
     //fetch favorites method, will fetch the information of the destinations based 
