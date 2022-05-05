@@ -12,12 +12,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/htmlincludejs"></script>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.93/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.93/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
     <script type="module" src="saveFilter.js"></script>
     <title>enRoute</title>
 </head>
 <include src="header.html"></include>
 
-<body id="body">
+<body class="min-vh-100 d-flex flex-column justify-content-between" id="body">
     <include src="filterBar.html"></include>
     <div class="d-flex flex-wrap align-items-center justify-content-center">
         <a href="index.html" type="submit" form="filterForm" value="Submit" class="search" id="search">New Search</a>
@@ -38,7 +40,33 @@
             </div>
         </div>
         <div class="col-md-6">
-            <img class="mx-auto rounded d-block" src="images/cs326_proj1_gEarth1.JPG" />
+            <!-- <img class="mx-auto rounded d-block" src="images/cs326_proj1_gEarth1.JPG" /> -->
+            <div class="mx-auto rounded d-block" id="cesiumContainer"></div>
+          <script>
+            // Your access token can be found at: https://cesium.com/ion/tokens.
+            // This is the default access token from your ion account
+
+            Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIwZWE2ZjgwZi02ZTZlLTQyOTktODRiZi0xYWY0YmI5ZGU0YTMiLCJpZCI6OTIxNTQsImlhdCI6MTY1MTU5NTI3M30.MH9jwrj4BfebhybzHa541T2Z2H1zJ7z0Wdi0PTea5O0';
+
+            // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
+            const viewer = new Cesium.Viewer('cesiumContainer', {
+              // terrainProvider: Cesium.createWorldTerrain()
+              imageryProvider : Cesium.createWorldImagery({
+                  style : Cesium.IonWorldImageryStyle.AERIAL_WITH_LABELS
+              }),
+              baseLayerPicker : false
+            });    
+            // Add Cesium OSM Buildings, a global 3D buildings layer.
+            const buildingTileset = viewer.scene.primitives.add(Cesium.createOsmBuildings());   
+            // Fly the camera to Lisbon at the given longitude, latitude, and height.
+            viewer.camera.flyTo({
+              destination : Cesium.Cartesian3.fromDegrees(-9.142685,38.736946, 400),
+              orientation : {
+                heading : Cesium.Math.toRadians(0.0),
+                pitch : Cesium.Math.toRadians(-25.0),
+              }
+            });
+          </script>
         </div>
         <div class="col-md-3 text-center" id="searchResults">
             <h2>Top 5 Matches</h2>
@@ -88,7 +116,7 @@
         </div>
     </div>
     </div>
+  <include src="footer.html"></include>
 </body>
-<include src="footer.html"></include>
 
 </html>
