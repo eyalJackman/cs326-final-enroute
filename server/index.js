@@ -22,15 +22,11 @@ class Server{
       }
     });
 
-    this.app.get('/checkUser', async (req, res) => {
+    this.app.post('/checkUser', async (req, res) => {
       try {
-        const validUser = await self.db.readUser();
-        //TODO find what validUser will return;
-        if(validUser === "null"){
-            res.send(JSON.stringify("False"));
-        }else{
-            res.send(JSON.stringify("True"));
-        }
+        const { user,password } = req.body;
+        const validUser = await self.db.findUser(user,password);
+        res.send(JSON.stringify(validUser));
       } catch (err) {
         res.status(500).send(err);
       }
@@ -48,7 +44,7 @@ class Server{
     await this.initDb();
     const port = process.env.PORT || 8080;
     this.app.listen(port, () => {
-      console.log(`ScoreServer listening on port ${port}!`);
+      console.log(`Server listening on port ${port}!`);
     });
   }
 }

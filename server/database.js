@@ -24,14 +24,15 @@ export class Database{
         this.client.close();
     }
     //add a new user
-    async createUser(name, password){
-        const res = await this.collection_users.insertOne({ name, password});
+    async createUser(username, password){
+        const res = await this.collection_users.insertOne({ username, password});
         return res;
     }
     //read a user
-    // async readUser(id){
-    //     const res = await this.collection_users.findOne({ _id: id });
-    // }
+    async findUser(name , pass){
+        const res = await this.collection_users.findOne({ username: name , password: pass });
+        return res;
+    }
     // // update user name
     // async updateUserName(id, name){
     //     const res = await this.collection_users.updateOne(

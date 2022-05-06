@@ -1,15 +1,23 @@
-async function checkUser(user,password) {
-    let response = await fetch(`/highestWordScores`, {
-        method: 'GET',
-      });
-    const data = await response.json();
-    return data;
+async function userRequestFetch(user,password) {
+    const data = JSON.stringify({user,password });
+    const response = await fetch('/checkUser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: data,
+    });
+    if (!response.ok) {
+      console.error(`Unable to check ${data}`);
+    }else{
+        return response.json();
+    }
 }
 
 let loginButton = document.getElementById('login_button');
 
 loginButton.addEventListener('click', async () => {
-    console.log("here");
+    console.log("login button clicked");
     let username = document.getElementById("login_username");
     let password = document.getElementById("login_password");
     if (username.value === "" || password.value === "") {
@@ -17,12 +25,11 @@ loginButton.addEventListener('click', async () => {
         return;
     }
     else{
-        let validLogin = true;
-        //await checkUser(username.value,password.value);
-        if(validLogin){
+        let userRequest = await userRequestFetch(username.value,password.value);
+        if(userRequest){
             username.value = "";
             password.value = "";
-            alert(`Your Account has been Created!`);
+            alert(`Your Are Logged In!`);
             return;
         }else{
             alert(`Incorrect Account Entered`);
