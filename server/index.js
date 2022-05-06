@@ -22,14 +22,19 @@ class Server{
       }
     });
 
-    // this.app.get('/highestWordScores', async (req, res) => {
-    //   try {
-    //     const highestWordScores = await self.db.top10WordScores();
-    //     res.send(JSON.stringify(highestWordScores));
-    //   } catch (err) {
-    //     res.status(500).send(err);
-    //   }
-    // });
+    this.app.get('/checkUser', async (req, res) => {
+      try {
+        const validUser = await self.db.readUser();
+        //TODO find what validUser will return;
+        if(validUser === "null"){
+            res.send(JSON.stringify("False"));
+        }else{
+            res.send(JSON.stringify("True"));
+        }
+      } catch (err) {
+        res.status(500).send(err);
+      }
+    });
   
   }
 

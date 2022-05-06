@@ -27,6 +27,5 @@ registerButton.addEventListener('click', async () => {
         password.value = "";
         alert(`Your Account has been Created!`);
         return;
-    }
-    
+    } 
 });
