@@ -1,20 +1,21 @@
 import express from "express";
-import { Database } from './database.js';
+import { Database } from "./database.js";
+import * as url from "url";
 
-class Server{
+class Server {
   constructor(dburl) {
     this.dburl = dburl;
     this.app = express();
     this.app.use(express.json());
-    this.app.use('/', express.static('client'));
+    this.app.use("/", express.static("client"));
   }
 
-  async initRoutes(){
+  async initRoutes() {
     const self = this;
 
-    this.app.post('/createUser', async (req, res) => {
+    this.app.post("/createUser", async (req, res) => {
       try {
-        const { user,password } = req.body;
+        const { user, password } = req.body;
         const account = await self.db.createUser(user, password);
         res.send(JSON.stringify(account));
       } catch (err) {
@@ -22,26 +23,46 @@ class Server{
       }
     });
 
-    this.app.post('/checkUser', async (req, res) => {
+    this.app.post("/checkUser", async (req, res) => {
       try {
-        const { user,password } = req.body;
-        const validUser = await self.db.findUser(user,password);
+        const { user, password } = req.body;
+        const validUser = await self.db.findUser(user, password);
         res.send(JSON.stringify(validUser));
       } catch (err) {
         res.status(500).send(err);
       }
     });
 
-    this.app.post('/saveFilter', async (req, res) => {
-        try {
-          const { region, season, weather, vacationType } = req.body;
-          const filter = await self.db.saveFilter(region, season, weather, vacationType);
-          res.send(JSON.stringify(filter));
-        } catch (err) {
-          res.status(500).send(err);
-        }
-      });
-  
+    this.app.post("/saveFilter", async (req, res) => {
+      try {
+        const { region, season, weather, vacation_type } = req.body;
+        const filter = await self.db.saveFilter(
+          region,
+          season,
+          weather,
+          vacation_type
+        );
+        res.send(JSON.stringify(filter));
+      } catch (err) {
+        res.status(500).send(err);
+      }
+    });
+    this.app.post("/getResults", async (req, res) => {
+      try {
+        const parsedURL = url.parse(req.url, true);
+        const { region, season, weather, vacation_type } = parsedURL.query;
+        const filter = await self.db.getResults(
+          region,
+          season,
+          weather,
+          vacation_type
+        );
+        // res.send(JSON.stringify(parsedURL.query));
+        res.send(JSON.stringify(filter));
+      } catch (err) {
+        res.status(500).send(err);
+      }
+    });
   }
 
   async initDb() {
@@ -81,8 +102,8 @@ server.start();
 // const readFilters = readFromFile(TEMP_FILTER_FILE);
 
 // function saveToFilterFile(path) {
-//     return async(region, season, weather, vacationType) => {
-//         const data = { region, season, weather, vacationType };
+//     return async(region, season, weather, vacation_type) => {
+//         const data = { region, season, weather, vacation_type };
 //         const filters = await readFilters(path);
 //         filters.push(data);
 //         writeFile(path, JSON.stringify(filters), "utf8");
@@ -118,7 +139,7 @@ server.start();
 
 // app.post("/saveFilter", (req, res) => {
 //     const filter = req.body;
-//     saveFilter(filter.region, filter.season, filter.weather, filter.vacationType);
+//     saveFilter(filter.region, filter.season, filter.weather, filter.vacation_type);
 //     res.status(200).json({ status: "success" });
 // });
 
