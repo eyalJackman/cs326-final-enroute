@@ -19,6 +19,7 @@ export class Database{
     async init(){
         this.collection_users = this.db.collection('users');
         this.collection_destinations = this.db.collection('destinations');
+        this.collection_filters = this.db.collection('filters');
     }
     async close(){
         this.client.close();
@@ -33,6 +34,13 @@ export class Database{
         const res = await this.collection_users.findOne({ username: name , password: pass });
         return res;
     }
+
+    //save filter
+    async saveFilter(region, season, weather, vacationType){
+        const res = await this.collection_filters.insertOne({ region, season, weather, vacationType });
+        return res;
+    }
+
     // // update user name
     // async updateUserName(id, name){
     //     const res = await this.collection_users.updateOne(

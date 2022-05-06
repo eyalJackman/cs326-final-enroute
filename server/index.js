@@ -31,6 +31,16 @@ class Server{
         res.status(500).send(err);
       }
     });
+
+    this.app.post('/saveFilter', async (req, res) => {
+        try {
+          const { region, season, weather, vacationType } = req.body;
+          const filter = await self.db.saveFilter(region, season, weather, vacationType);
+          res.send(JSON.stringify(filter));
+        } catch (err) {
+          res.status(500).send(err);
+        }
+      });
   
   }
 
