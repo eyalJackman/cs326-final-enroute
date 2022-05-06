@@ -20,14 +20,20 @@ searchButton.addEventListener('click', async () => {
   const regionOption = document.getElementById('region');
   const seasonOption = document.getElementById('season');
   const weatherOption = document.getElementById('weather');
-  const vacationTypeOption = document.getElementById('vacation');
+  const vacationTypeOption = document.getElementById('vacation_type');
     console.log("search button clicked");
     let region = regionOption.value;
     console.log(region);
     let season = seasonOption.value;
     let weather = weatherOption.value;
     let vacationType = vacationTypeOption.value;
-    let filter = await saveFilter(region, season, weather, vacationType);
+    if(region === "Region" || season === "Season" || weather === "Weather" || vacationType === "Vacation Type"){
+      alert(`Please Add Filters`)
+      return;
+    }else{
+      let filter = await saveFilter(region, season, weather, vacationType);
+    }
+    
   });
 
   
