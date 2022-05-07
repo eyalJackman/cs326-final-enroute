@@ -25,8 +25,8 @@ export class SearchResults {
   }
 
   render(element) {
+    console.log(this.destinations);
     for (let i = 0; i < this.destinations.length; i++) {
-      console.log(this.destinations[i]);
       const currDest = this.destinations[i];
       const box = document.createElement("div");
       box.classList.add("card");
@@ -35,13 +35,18 @@ export class SearchResults {
       //add place of element at index 0 in destinations list
       place.textContent = currDest["name"];
       place.classList.add("card-header");
-
+      place.addEventListener("click", (ev) => {
+        localStorage.removeItem("load");
+        console.log(this.destinations[i]);
+        localStorage.setItem("load", JSON.stringify(this.destinations[i]));
+        window.location.href = "./destination.html";
+      });
       const body = document.createElement("div");
       body.classList.add("card-body");
 
       //add pic of element at index 0 in destinations list
       const pic = document.createElement("img");
-      pic.src = "images/cs326_destination_punta_cana.jpg";
+      pic.src = currDest["img"];
       pic.classList.add("image");
       //add to favorites button
       const button = document.createElement("button");
