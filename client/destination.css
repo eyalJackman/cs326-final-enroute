@@ -1,10 +1,14 @@
 #destination_img_container,
 #destination_name {
-    text-align: center;
-    width: auto;
+  text-align: center;
+  width: auto;
 }
 
 #destination_image {
-    margin: auto;
-    border: 2px black solid;
+  margin: auto;
+  border: 2px black solid;
+}
+
+#destination {
+  text-align: center;
 }
