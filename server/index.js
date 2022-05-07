@@ -117,8 +117,8 @@ app.get("/", (req, res) => {
 
 app.post("/createUser", async (req, res) => {
   try {
-    const { user, password } = req.body;
-    const account = await database.createUser(user, password);
+    const { user, password, fullname, email, phonenumber } = req.body;
+    const account = await database.createUser(user, password, fullname, email, phonenumber);
     res.send(JSON.stringify(account));
   } catch (err) {
     res.status(500).send(err);

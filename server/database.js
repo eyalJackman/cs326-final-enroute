@@ -25,8 +25,8 @@ export class Database {
     this.client.close();
   }
   //add a new user
-  async createUser(username, password) {
-    const res = await this.collection_users.insertOne({ username, password });
+  async createUser(username, password, fullname, email, phonenumber) {
+    const res = await this.collection_users.insertOne({ username, password, fullname, email, phonenumber });
     return res;
   }
   //read a user
