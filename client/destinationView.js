@@ -1,3 +1,4 @@
+
 const information = document.getElementById("destination_information");
 const img = document.getElementById("destination_image");
 const name = document.getElementById("destination_name");
@@ -58,6 +59,40 @@ const getDescription = async (name) => {
     return JSON.stringify(extract);
   }
 };
+
+const addToFavoriteButton = document.getElementById("favorite");
+
+async function addToFavorite(username, location) {
+  const data = JSON.stringify({ username, location });
+  const response = await fetch("/addtofavorites", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: data,
+  });
+  if (!response.ok) {
+    console.error(`Unable to save ${data} to server`);
+  }
+  return;
+}
+
+addToFavoriteButton.addEventListener("click", async () => {
+//   console.log(login);
+//   console.log(user_information);
+  const parent = addToFavoriteButton.parentElement;
+  const children = parent.children;
+
+  // console.log(user_information["_id"]);
+  // https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_node_childnodes2  refer to this
+  // to understand the children
+  //parent div--> {h5, button, div}
+  // look up ways to get the html...
+  const username = localStorage.getItem("userid");
+  await addToFavorite(username, children[0].textContent);
+  console.log("this work");
+});
+
 
 export default addDestination;
 export { getDescription };

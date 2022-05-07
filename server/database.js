@@ -31,6 +31,7 @@ export class Database {
         }
         //read a user
     async findUser(username, password) {
+      console.log(username);
         const res = await this.collection_users.find({ username, password }).toArray();
         return res;
     }
@@ -70,12 +71,12 @@ export class Database {
     }
 
     // // update user name
-    // async updateUserName(id, name){
-    //     const res = await this.collection_users.updateOne(
-    //         {_id: id }, {$set: {name: name}}
-    //     );
-    //     return res;
-    // }
+    async updateUserName(_id, name){
+        const res = await this.collection_users.updateOne(
+            {_id: _id }, {$set: {username: name}}
+        );
+        return res;
+    }
     // // update user email
     // async updateUserEmail(id, email){
     //     const res = await this.collection_users.updateOne(
