@@ -2,85 +2,87 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    <link href="styles.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/htmlincludejs"></script>
-    <script src="https://cesium.com/downloads/cesiumjs/releases/1.93/Build/Cesium/Cesium.js"></script>
-    <link href="https://cesium.com/downloads/cesiumjs/releases/1.93/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
-    <script type="module" src="saveFilter.js"></script>
-    <title>enRoute</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link href="styles.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/htmlincludejs"></script>
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.93/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.93/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <script type="module" src="saveFilter.js"></script>
+  <title>enRoute</title>
 </head>
 <include src="header.html"></include>
 
 <body class="min-vh-100 d-flex flex-column justify-content-between" id="body">
-    <include src="filterBar.html"></include>
-    <div class="d-flex flex-wrap align-items-center justify-content-center">
-        <a href="index.html" type="submit" form="filterForm" value="Submit" class="search" id="search">New Search</a>
+  <include src="filterBar.html"></include>
+  <div class="d-flex flex-wrap align-items-center justify-content-center">
+    <a href="index.html" type="submit" form="filterForm" value="Submit" class="search" id="search">New Search</a>
+  </div>
+  </hr>
+  <div class="row mx-md" id="result_logs">Country</div>
+  <div class="row mx-md">
+    <div class="col-md-3">
+      <div class="dropdown">
+        <button type="button" id="filter"
+          class="dropdown-toggle align-content-center btn btn-secondary btn-lg active btn-block">
+          Filter
+        </button>
+        <div class="dropdown-menu" aria-labelledby="filter">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item disabled" href="#">Action</a>
+          <a class="dropdown-item disabled" href="#">Action</a>
+        </div>
+      </div>
     </div>
-    </hr>
-    <div class="row mx-md" id="result_logs">Country</div>
-    <div class="row mx-md">
-        <div class="col-md-3">
-            <div class="dropdown">
-                <button type="button" id="filter" class="dropdown-toggle align-content-center btn btn-secondary btn-lg active btn-block">
-              Filter
-            </button>
-                <div class="dropdown-menu" aria-labelledby="filter">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item disabled" href="#">Action</a>
-                    <a class="dropdown-item disabled" href="#">Action</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <!-- <img class="mx-auto rounded d-block" src="images/cs326_proj1_gEarth1.JPG" /> -->
-            <div class="mx-auto rounded d-block" id="cesiumContainer"></div>
-          <script>
-            // Your access token can be found at: https://cesium.com/ion/tokens.
-            // This is the default access token from your ion account
+    <div class="col-md-6">
+      <!-- <img class="mx-auto rounded d-block" src="images/cs326_proj1_gEarth1.JPG" /> -->
+      <div class="mx-auto rounded d-block" id="cesiumContainer"></div>
+      <script>
+                // Your access token can be found at: https://cesium.com/ion/tokens.
+                // This is the default access token from your ion account
 
-            Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIwZWE2ZjgwZi02ZTZlLTQyOTktODRiZi0xYWY0YmI5ZGU0YTMiLCJpZCI6OTIxNTQsImlhdCI6MTY1MTU5NTI3M30.MH9jwrj4BfebhybzHa541T2Z2H1zJ7z0Wdi0PTea5O0';
+                // Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIwZWE2ZjgwZi02ZTZlLTQyOTktODRiZi0xYWY0YmI5ZGU0YTMiLCJpZCI6OTIxNTQsImlhdCI6MTY1MTU5NTI3M30.MH9jwrj4BfebhybzHa541T2Z2H1zJ7z0Wdi0PTea5O0';
 
-            // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
-            const viewer = new Cesium.Viewer('cesiumContainer', {
-              // terrainProvider: Cesium.createWorldTerrain()
-              imageryProvider : Cesium.createWorldImagery({
-                  style : Cesium.IonWorldImageryStyle.AERIAL_WITH_LABELS
-              }),
-              baseLayerPicker : false
-            });    
-            // Add Cesium OSM Buildings, a global 3D buildings layer.
-            const buildingTileset = viewer.scene.primitives.add(Cesium.createOsmBuildings());   
-            // Fly the camera to Lisbon at the given longitude, latitude, and height.
-            viewer.camera.flyTo({
-              destination : Cesium.Cartesian3.fromDegrees(-9.142685,38.736946, 400),
-              orientation : {
-                heading : Cesium.Math.toRadians(0.0),
-                pitch : Cesium.Math.toRadians(-25.0),
-              }
-            });
-          </script>
-          <script type="module" src="addFavorite.js"></script>
+                // // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
+                // const viewer = new Cesium.Viewer('cesiumContainer', {
+                //   // terrainProvider: Cesium.createWorldTerrain()
+                //   imageryProvider : Cesium.createWorldImagery({
+                //       style : Cesium.IonWorldImageryStyle.AERIAL_WITH_LABELS
+                //   }),
+                //   baseLayerPicker : false
+                // });
+                // // Add Cesium OSM Buildings, a global 3D buildings layer.
+                // const buildingTileset = viewer.scene.primitives.add(Cesium.createOsmBuildings());
+                // // Fly the camera to Lisbon at the given longitude, latitude, and height.
+                // viewer.camera.flyTo({
+                //   destination : Cesium.Cartesian3.fromDegrees(-9.142685,38.736946, 400),
+                //   orientation : {
+                //     heading : Cesium.Math.toRadians(0.0),
+                //     pitch : Cesium.Math.toRadians(-25.0),
+                //   }
+                // });
+      </script>
+      <script type="module" src="addFavorite.js"></script>
+    </div>
+    <div class="col-md-3 text-center" id="searchResults">
+      <h2>Top 5 Matches</h2>
+      <div class="card bg-default">
+        <h5 class="card-header">Fort Lauderdale, Florida, USA</h5>
+        <button id="favorite">Add</button>
+        <div class="card-body">
+          <img class="mx-auto rounded d-block" src="images/cs326_proj1_ftLaud.jpg" />
+          <br />
         </div>
-        <div class="col-md-3 text-center" id="searchResults">
-            <h2>Top 5 Matches</h2>
-            <div class="card bg-default">
-                <h5 class="card-header">Fort Lauderdale, Florida, USA</h5>
-                <button id="favorite">Add</button>
-                <div class="card-body">
-                    <img class="mx-auto rounded d-block" src="images/cs326_proj1_ftLaud.jpg" />
-                    <br />
-                </div>
-            </div>
-            <!-- <div class="card">
+      </div>
+      <!-- <div class="card">
             <h5 class="card-header">Miami Beach, Florida, USA</h5>
             <div class="card-body">
               <img
@@ -116,9 +118,9 @@
               />
             </div>
           </div> -->
-        </div>
     </div>
-    </div>
+  </div>
+  </div>
   <include src="footer.html"></include>
 </body>
 
