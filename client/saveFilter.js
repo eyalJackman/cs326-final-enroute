@@ -1,42 +1,54 @@
 // import { SearchResults } from "./searchResults.js";
+const ls = window.localStorage;
 
-async function saveFilter(region, season, weather, vacationType) {
-  const data = JSON.stringify({ region, season, weather, vacationType });
-  const response = await fetch('/saveFilter', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: data,
-  });
-  if (!response.ok) {
-    console.error(`Unable to save ${data} to server`);
+// async function saveFilter(region, season, weather, vacationType) {
+//   const data = JSON.stringify({ region, season, weather, vacationType });
+//   const response = await fetch("/saveFilter", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: data,
+//   });
+//   if (!response.ok) {
+//     console.error(`Unable to save ${data} to server`);
+//   }
+// }
+
+let obj = { region: "test", season: " test" };
+const saveFilter = (obj) => {
+  ls.getItem("filter");
+  ls.setItem("filter", JSON.stringify(obj));
+  console.log(ls.getItem("filter"));
+};
+
+const searchButton = document.getElementById("search");
+
+searchButton.addEventListener("click", async () => {
+  const regionOption = document.getElementById("region");
+  const seasonOption = document.getElementById("season");
+  const weatherOption = document.getElementById("weather");
+  const vacationTypeOption = document.getElementById("vacation_type");
+  console.log("search button clicked");
+  let region = regionOption.value;
+  console.log(region);
+  let season = seasonOption.value;
+  let weather = weatherOption.value;
+  let vacationType = vacationTypeOption.value;
+  if (
+    region === "Region" ||
+    season === "Season" ||
+    weather === "Weather" ||
+    vacationType === "Vacation Type"
+  ) {
+    alert(`Please Add Filters`);
+    return;
+  } else {
+    let filter = saveFilter({ region, season, weather, vacationType });
+    ls.setItem("test", "value");
   }
-}
+});
 
-const searchButton = document.getElementById('search');
-
-searchButton.addEventListener('click', async () => {
-  const regionOption = document.getElementById('region');
-  const seasonOption = document.getElementById('season');
-  const weatherOption = document.getElementById('weather');
-  const vacationTypeOption = document.getElementById('vacation_type');
-    console.log("search button clicked");
-    let region = regionOption.value;
-    console.log(region);
-    let season = seasonOption.value;
-    let weather = weatherOption.value;
-    let vacationType = vacationTypeOption.value;
-    if(region === "Region" || season === "Season" || weather === "Weather" || vacationType === "Vacation Type"){
-      alert(`Please Add Filters`)
-      return;
-    }else{
-      let filter = await saveFilter(region, season, weather, vacationType);
-    }
-    
-  });
-
-  
 // searchButton.addEventListener("click", (event) => {
 //   //create class instance with region season weather vacation type paramaters
 //     //rendersearch results using element id 'col-md-3 text-center' here?
