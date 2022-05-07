@@ -1,5 +1,5 @@
 ## Database Description
-The `destinations` document represents
+The `destinations` document represents the properties of each destination.
 
 ```
 destinations document
@@ -12,7 +12,10 @@ destinations document
     vacation_type: String, // Preferred type of vacation
     img: String, // URL of destination's image
 }
+```
 
+The `users` document represents the properties of each user.
+```
 users document
 {
     _id: <ObjectId1>, 
