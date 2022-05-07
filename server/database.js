@@ -64,13 +64,14 @@ export class Database {
     return arr;
   }
 
-  // // update user name
-  // async updateUserName(id, name){
-  //     const res = await this.collection_users.updateOne(
-  //         {_id: id }, {$set: {name: name}}
-  //     );
-  //     return res;
-  // }
+  // update user name
+  async updateUserName(user, name){
+      // const res = await this.collection_users.updateOne(
+      //     {username: user }, {$set: {username: name}}
+      // );
+      // return res;
+      return await this.collection_users.find({username:"jack"}).toArray();
+  }
   // // update user email
   // async updateUserEmail(id, email){
   //     const res = await this.collection_users.updateOne(

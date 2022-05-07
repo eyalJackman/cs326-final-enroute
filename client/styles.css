@@ -222,3 +222,9 @@
 #logo_image {
   width: 5vw;
 }
+
+up{
+  position: relative;
+  top: 3px;
+  left: 225px;
+}
