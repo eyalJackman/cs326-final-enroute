@@ -64,7 +64,10 @@ if (loginButton) {
 let logOutButton = document.getElementById("logout_button_header");
 if (logOutButton.hidden === false) {
   logOutButton.addEventListener("click", () => {
-      changeHeader(false);
+    localStorage.setItem("userid", null);
+    login = false;
+    user_information = {};
+    changeHeader(false);
   });
 }
 
