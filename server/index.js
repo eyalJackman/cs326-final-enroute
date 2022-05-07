@@ -141,8 +141,7 @@ app.post("/getResults", async (req, res) => {
   try {
     const { region, season, weather, vacation_type } = req.body;
     const filter = await database.getResults(region, season, weather, vacation_type);
-    console.log(filter)
-    res.send(JSON.stringify(filter));
+    res.send(filter);
   } catch (err) {
     console.log(err);
     res.status(500).send(err);
