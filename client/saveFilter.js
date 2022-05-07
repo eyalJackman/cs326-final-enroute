@@ -1,60 +1,74 @@
-// import { SearchResults } from "./searchResults.js";
+import { SearchResults } from "./searchResults.js";
 
-async function saveFilter(region, season, weather, vacationType) {
-  const data = JSON.stringify({ region, season, weather, vacationType });
-  const response = await fetch('/saveFilter', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: data,
-  });
-  if (!response.ok) {
-    console.error(`Unable to save ${data} to server`);
-  }
-}
+
+// async function saveFilter(region, season, weather, vacationType) {
+//   const data = JSON.stringify({ region, season, weather, vacationType });
+//   const response = await fetch('/saveFilter', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: data,
+//   });
+//   if (!response.ok) {
+//     console.error(`Unable to save ${data} to server`);
+//   }
+// }
 
 const searchButton = document.getElementById('search');
 
-searchButton.addEventListener('click', async () => {
-  const regionOption = document.getElementById('region');
-  const seasonOption = document.getElementById('season');
-  const weatherOption = document.getElementById('weather');
-  const vacationTypeOption = document.getElementById('vacation_type');
-    console.log("search button clicked");
-    let region = regionOption.value;
-    console.log(region);
-    let season = seasonOption.value;
-    let weather = weatherOption.value;
-    let vacationType = vacationTypeOption.value;
-    if(region === "Region" || season === "Season" || weather === "Weather" || vacationType === "Vacation Type"){
-      alert(`Please Add Filters`)
-      return;
-    }else{
-      let filter = await saveFilter(region, season, weather, vacationType);
-    }
-    
-  });
-
-  
-// searchButton.addEventListener("click", (event) => {
-//   //create class instance with region season weather vacation type paramaters
-//     //rendersearch results using element id 'col-md-3 text-center' here?
+// searchButton.addEventListener('click', async () => {
 //   const regionOption = document.getElementById('region');
 //   const seasonOption = document.getElementById('season');
 //   const weatherOption = document.getElementById('weather');
 //   const vacationTypeOption = document.getElementById('vacation');
-//   console.log("search button clicked");
-//   let region = regionOption.value;
-//   console.log(region);
-//   let season = seasonOption.value;
-//   let weather = weatherOption.value;
-//   let vacationType = vacationTypeOption.value;
-//   console.log("this work");
-//   const search = new SearchResults();
-//   search.render(document.getElementById("searchResults"));
-//   event.preventDefault();
-// });
+//     console.log("search button clicked");
+//     let region = regionOption.value;
+//     console.log(region);
+//     let season = seasonOption.value;
+//     let weather = weatherOption.value;
+//     let vacationType = vacationTypeOption.value;
+//     if(region === "Region" || season === "Season" || weather === "Weather" || vacationType === "Vacation Type"){
+//       alert(`Please Add Filters`)
+//       return;
+//     }else{
+//       let filter = await saveFilter(region, season, weather, vacationType);
+//     }
+    
+//   });
 
-// const favButton = document.getElementById("favorite");
-// favButton.addEventListener("click", addToFavorites());
+async function destinationsCRUD(region, season, weather, vacation_type){
+    const data = JSON.stringify({region, season, weather, vacation_type});
+    const response = await fetch('/getResults', {
+        method: 'POST',
+        body: data
+    });
+    if (!response.ok) {
+        console.error(`Unable to save ${data} to server`);
+    }
+    return response;
+}
+
+searchButton.addEventListener("click", (event) => {
+  //create class instance with region season weather vacation type paramaters
+    //rendersearch results using element id 'col-md-3 text-center' here?
+  const regionOption = document.getElementById('region');
+  const seasonOption = document.getElementById('season');
+  const weatherOption = document.getElementById('weather');
+  const vacationTypeOption = document.getElementById('vacation');
+  console.log("search button clicked");
+  const region = regionOption.value;
+  const season = seasonOption.value;
+  const weather = weatherOption.value;
+  const vacation_type = vacationTypeOption.value;
+  console.log(region);
+  console.log(season);
+  console.log(weather);
+  console.log(vacation_type);
+  console.log("this work");
+  let destination = destinationsCRUD(region, season, weather, vacation_type).then(console.log);
+  console.log(destination);
+  const searchRes = new SearchResults(destination);
+  searchRes.render(document.getElementById("searchResults"));
+  event.preventDefault();
+});

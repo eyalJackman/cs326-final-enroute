@@ -1,4 +1,4 @@
-import { Database } from "./database.js";
+// import { Database } from "./database.js";
 
 export class SearchResults {
     //create class search results
@@ -7,10 +7,10 @@ export class SearchResults {
     // render: for loop with 10 iterations, create div (card) in classlist card, append child to colmd3textcenter
     //constructor(region, season, weather, vacationType){
     constructor(destinations) {
-        this.region = "region";
-        this.season = "season";
-        this.weather = "weather";
-        this.vacationType = "vacationType";
+        // this.region = "region";
+        // this.season = "season";
+        // this.weather = "weather";
+        // this.vacationType = "vacationType";
         this.destinations = destinations;
     }
 

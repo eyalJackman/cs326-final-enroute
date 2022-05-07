@@ -51,12 +51,12 @@ export class Database {
 
   async getResults(region, season, weather, vacation_type) {
     const arr = [];
-    await this.collection_destinations
+    const ret = await this.collection_destinations
       .find({
-        region: region,
-        season: season,
-        weather: weather,
-        vacation_type: vacation_type,
+        region,
+        season,
+        weather,
+        vacation_type,
       })
       .forEach((obj) => arr.push(obj));
     console.log(`Results: ${arr}`);

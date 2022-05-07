@@ -49,8 +49,8 @@ class Server {
     });
     this.app.post("/getResults", async (req, res) => {
       try {
-        const parsedURL = url.parse(req.url, true);
-        const { region, season, weather, vacation_type } = parsedURL.query;
+        // const parsedURL = url.parse(req.url, true);
+        const { region, season, weather, vacation_type } = req.body;
         const filter = await self.db.getResults(
           region,
           season,
@@ -60,6 +60,7 @@ class Server {
         // res.send(JSON.stringify(parsedURL.query));
         res.send(JSON.stringify(filter));
       } catch (err) {
+        console.log(err);
         res.status(500).send(err);
       }
     });
