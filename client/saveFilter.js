@@ -1,41 +1,31 @@
 import { SearchResults } from "./searchResults.js";
 
+const searchButton = document.getElementById("search");
 
-// async function saveFilter(region, season, weather, vacationType) {
-//   const data = JSON.stringify({ region, season, weather, vacationType });
-//   const response = await fetch('/saveFilter', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: data,
-//   });
-//   if (!response.ok) {
-//     console.error(`Unable to save ${data} to server`);
-//   }
-// }
-
-const searchButton = document.getElementById('search');
-
-// searchButton.addEventListener('click', async () => {
-//   const regionOption = document.getElementById('region');
-//   const seasonOption = document.getElementById('season');
-//   const weatherOption = document.getElementById('weather');
-//   const vacationTypeOption = document.getElementById('vacation');
-//     console.log("search button clicked");
-//     let region = regionOption.value;
-//     console.log(region);
-//     let season = seasonOption.value;
-//     let weather = weatherOption.value;
-//     let vacationType = vacationTypeOption.value;
-//     if(region === "Region" || season === "Season" || weather === "Weather" || vacationType === "Vacation Type"){
-//       alert(`Please Add Filters`)
-//       return;
-//     }else{
-//       let filter = await saveFilter(region, season, weather, vacationType);
-//     }
-    
-//   });
+searchButton.addEventListener("click", async () => {
+  const regionOption = document.getElementById("region");
+  const seasonOption = document.getElementById("season");
+  const weatherOption = document.getElementById("weather");
+  const vacationTypeOption = document.getElementById("vacation");
+  let region = regionOption.value;
+  let season = seasonOption.value;
+  let weather = weatherOption.value;
+  let vacationType = vacationTypeOption.value;
+  if (
+    region === "Region" ||
+    season === "Season" ||
+    weather === "Weather" ||
+    vacationType === "Vacation Type"
+  ) {
+    alert(`Please Add Filters`);
+    return;
+  } else {
+    localStorage.setItem(
+      "filter",
+      JSON.stringify({ region, season, weather, vacationType })
+    );
+  }
+});
 
 async function destinationsCRUD(region, season, weather, vacation_type){
     const data = JSON.stringify({region, season, weather, vacation_type});
