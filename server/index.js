@@ -114,57 +114,57 @@ app.get("/", (req, res) => {
   res.sendFile("client/home.html", { root: "./" });
 });
 
-// app.post("/createUser", async(req, res) => {
-//     try {
-//         const { user, password } = req.body;
-//         const account = await self.db.createUser(user, password);
-//         res.send(JSON.stringify(account));
-//     } catch (err) {
-//         res.status(500).send(err);
-//     }
-// });
+app.post("/createUser", async (req, res) => {
+  try {
+    const { user, password } = req.body;
+    const account = await self.db.createUser(user, password);
+    res.send(JSON.stringify(account));
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
 
-// app.post("/checkUser", async(req, res) => {
-//     try {
-//         const { user, password } = req.body;
-//         const validUser = await self.db.findUser(user, password);
-//         res.send(validUser);
-//     } catch (err) {
-//         res.status(500).send(err);
-//     }
-// });
+app.post("/checkUser", async (req, res) => {
+  try {
+    const { user, password } = req.body;
+    const validUser = await self.db.findUser(user, password);
+    res.send(validUser);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
 
-// app.post("/saveFilter", async(req, res) => {
-//     try {
-//         const { region, season, weather, vacation_type } = req.body;
-//         const filter = await self.db.saveFilter(
-//             region,
-//             season,
-//             weather,
-//             vacation_type
-//         );
-//         res.send(JSON.stringify(filter));
-//     } catch (err) {
-//         res.status(500).send(err);
-//     }
-// });
+app.post("/saveFilter", async (req, res) => {
+  try {
+    const { region, season, weather, vacation_type } = req.body;
+    const filter = await self.db.saveFilter(
+      region,
+      season,
+      weather,
+      vacation_type
+    );
+    res.send(JSON.stringify(filter));
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
 
-// app.post("/getResults", async(req, res) => {
-//     try {
-//         const parsedURL = url.parse(req.url, true);
-//         const { region, season, weather, vacation_type } = parsedURL.query;
-//         const filter = await self.db.getResults(
-//             region,
-//             season,
-//             weather,
-//             vacation_type
-//         );
-//         // res.send(JSON.stringify(parsedURL.query));
-//         res.send(JSON.stringify(filter));
-//     } catch (err) {
-//         res.status(500).send(err);
-//     }
-// });
+app.post("/getResults", async (req, res) => {
+  try {
+    const parsedURL = url.parse(req.url, true);
+    const { region, season, weather, vacation_type } = parsedURL.query;
+    const filter = await self.db.getResults(
+      region,
+      season,
+      weather,
+      vacation_type
+    );
+    // res.send(JSON.stringify(parsedURL.query));
+    res.send(JSON.stringify(filter));
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
 
 // app.get("/client/destination", (req, res) => {
 //     res.send("Test");
