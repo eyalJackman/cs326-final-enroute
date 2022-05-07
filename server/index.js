@@ -3,7 +3,6 @@ import { Database } from "./database.js";
 import * as url from "url";
 // import logger from "morgan"
 
-
 // class Server {
 //   constructor(dburl) {
 //     this.dburl = dburl;
@@ -86,19 +85,17 @@ import * as url from "url";
 // const server = new Server(process.env.MONGODB_URI);
 // server.start();
 
-
-const getDatabase = () => {
-    try {
-        const database = new Database(process.env.MONGODB_URI)
-        await database.connect();
-        return database
-    } catch (err) {
-        console.log(err)
-    }
-}
+const getDatabase = async () => {
+  try {
+    const database = new Database(process.env.MONGODB_URI);
+    await database.connect();
+    return database;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 const database = getDatabase();
-
 
 const app = express();
 const port = 3000;
@@ -114,7 +111,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static("client"));
 
 app.get("/", (req, res) => {
-    res.sendFile("client/home.html", { root: "./" });
+  res.sendFile("client/home.html", { root: "./" });
 });
 
 // app.post("/createUser", async(req, res) => {
@@ -152,8 +149,6 @@ app.get("/", (req, res) => {
 //     }
 // });
 
-
-
 // app.post("/getResults", async(req, res) => {
 //     try {
 //         const parsedURL = url.parse(req.url, true);
@@ -170,8 +165,6 @@ app.get("/", (req, res) => {
 //         res.status(500).send(err);
 //     }
 // });
-
-
 
 // app.get("/client/destination", (req, res) => {
 //     res.send("Test");
@@ -192,11 +185,11 @@ app.get("/", (req, res) => {
 //   res.status(200).json({ status: "success" });
 // });
 
-app.all("*", async(request, response) => {
-    response.status(404).send(`Not found: ${request.path}`);
+app.all("*", async (request, response) => {
+  response.status(404).send(`Not found: ${request.path}`);
 });
 
 // Start the server on port 3000.
 app.listen(process.env.PORT || port, () => {
-    console.log(`Server started on http://localhost:${port}`);
+  console.log(`Server started on http://localhost:${port}`);
 });
