@@ -41,7 +41,7 @@ export class SearchResults {
 
       //add pic of element at index 0 in destinations list
       const pic = document.createElement("img");
-      //pic.src = "images/cs326_proj1_ftLaud.jpg";
+      pic.src = "images/cs326_destination_punta_cana.jpg";
       pic.classList.add("image");
       //add to favorites button
       const button = document.createElement("button");
