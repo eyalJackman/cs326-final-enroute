@@ -30,11 +30,8 @@ export class Database {
     return res;
   }
   //read a user
-  async findUser(name, pass) {
-    const res = await this.collection_users.findOne({
-      username: name,
-      password: pass,
-    });
+  async findUser(username, password) {
+    const res = await this.collection_users.find({ username, password}).toArray();
     return res;
   }
 

@@ -10,19 +10,19 @@ let login = false;
  */
 const user_information = {};
 
-async function userRequestFetch(user, password) {
-  const data = JSON.stringify({ user, password });
-  const response = await fetch("/checkUser", {
-    method: "POST",
+async function userRequestFetch(username, password) {
+  const data = JSON.stringify({ username, password });
+  const response = await fetch('/checkUser', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: data,
+    body: data
   });
   if (!response.ok) {
     console.error(`Unable to check ${data}`);
   } else {
-    return response.json();
+    return response;
   }
 }
 
@@ -43,6 +43,8 @@ loginButton.addEventListener("click", async () => {
       // alert(`Your Are Logged In!`);
       login = true;
       user_information["id"] = userRequest["_id"];
+      user_information["username"]= userRequest["username"];
+      user_information["password"] = userRequest["password"];
       return;
     } else {
       alert(`Incorrect Account Entered`);

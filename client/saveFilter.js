@@ -29,7 +29,6 @@ searchButton.addEventListener("click", async () => {
 
 async function destinationsCRUD(region, season, weather, vacation_type){
     const data = JSON.stringify({region, season, weather, vacation_type});
-    console.log(data);
     const response = await fetch('/getResults', {
         method: 'POST',
         headers: {

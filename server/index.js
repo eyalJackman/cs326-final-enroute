@@ -127,10 +127,24 @@ app.post("/createUser", async (req, res) => {
 
 app.post("/checkUser", async (req, res) => {
   try {
-    const { user, password } = req.body;
-    const validUser = await database.findUser(user, password);
-    res.send(validUser);
+    const {username, password} = JSON.parse(JSON.stringify(req.body));
+    const validUser = await database.findUser(username, password);
+    // console.log(validUser);
+    res.send(JSON.stringify(validUser));
   } catch (err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
+});
+
+app.post("/getResults", async (req, res) => {
+  try {
+    const { region, season, weather, vacation_type } = req.body;
+    const filter = await database.getResults(region, season, weather, vacation_type);
+    console.log(filter)
+    res.send(JSON.stringify(filter));
+  } catch (err) {
+    console.log(err);
     res.status(500).send(err);
   }
 });
@@ -150,17 +164,7 @@ app.post("/saveFilter", async (req, res) => {
   }
 });
 
-app.post("/getResults", async (req, res) => {
-  try {
-    const { region, season, weather, vacation_type } = req.body;
-    const filter = await database.getResults(region, season, weather, vacation_type);
-    console.log(filter)
-    res.send(JSON.stringify(filter));
-  } catch (err) {
-    console.log(err);
-    res.status(500).send(err);
-  }
-});
+
 
 // app.get("/client/destination", (req, res) => {
 //     res.send("Test");

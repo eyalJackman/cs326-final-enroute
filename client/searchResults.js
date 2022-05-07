@@ -26,8 +26,8 @@ export class SearchResults {
     }
 
     render(element) {
-        for (let i = 0; i < 3; i++) {
-            console.log(i);
+        for (let i = 0; i < length(this.destinations); i++) {
+            console.log(this.destinations[i]);
             const box = document.createElement("div");
             box.classList.add("card");
 
