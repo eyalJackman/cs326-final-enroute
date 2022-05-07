@@ -1,4 +1,4 @@
-// import { changeHeader } from "./header.js";
+import { changeHeader } from "./header.js";
 
 /**
  * @type {boolean}
@@ -45,18 +45,26 @@ if (loginButton) {
         username.value = "";
         password.value = "";
         // alert(`Your Are Logged In!`);
+        console.log("User is LoggedIn");
         login = true;
         user_information["id"] = userRequest["_id"];
         user_information["username"] = userRequest["username"];
         user_information["password"] = userRequest["password"];
-        window.location.href = "./index.html";
-        // changeHeader();
+        //window.location.href = "./index.html";
+        changeHeader(true);
         return;
       } else {
         alert(`Incorrect Account Entered`);
         return;
       }
     }
+  });
+}
+
+let logOutButton = document.getElementById("logout_button_header");
+if (logOutButton.hidden === false) {
+  logOutButton.addEventListener("click", () => {
+      changeHeader(false);
   });
 }
 
