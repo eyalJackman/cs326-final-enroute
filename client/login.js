@@ -1,3 +1,5 @@
+// import { changeHeader } from "./header.js";
+
 /**
  * @type {boolean}
  * @description Checks whether a user is logged in
@@ -38,6 +40,8 @@ if (loginButton) {
     } else {
       let userRequest = await userRequestFetch(username.value, password.value);
       if (userRequest) {
+        localStorage.setItem("userid", username.value);
+
         username.value = "";
         password.value = "";
         // alert(`Your Are Logged In!`);
@@ -45,6 +49,8 @@ if (loginButton) {
         user_information["id"] = userRequest["_id"];
         user_information["username"] = userRequest["username"];
         user_information["password"] = userRequest["password"];
+        window.location.href = "./index.html";
+        // changeHeader();
         return;
       } else {
         alert(`Incorrect Account Entered`);
