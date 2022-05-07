@@ -16,7 +16,7 @@ async function userRequestFetch(username, password) {
   const response = await fetch("/checkUser", {
     method: "POST",
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/json",
     },
     body: data,
   });
@@ -40,7 +40,7 @@ if (loginButton) {
       let userRequest = await userRequestFetch(username.value, password.value);
       if (userRequest) {
         localStorage.setItem("userid", username.value);
-
+        console.log(userRequest);
         username.value = "";
         password.value = "";
         // alert(`Your Are Logged In!`);

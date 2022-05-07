@@ -127,9 +127,10 @@ app.post("/createUser", async (req, res) => {
 
 app.post("/checkUser", async (req, res) => {
   try {
-    const {username, password} = JSON.parse(JSON.stringify(req.body));
+    const {username, password} = req.body;
+    console.log(username);
     const validUser = await database.findUser(username, password);
-    // console.log(validUser);
+    console.log(validUser);
     res.send(JSON.stringify(validUser));
   } catch (err) {
     console.log(err);
@@ -139,8 +140,8 @@ app.post("/checkUser", async (req, res) => {
 
 app.post("/addtofavorites", async (req, res) => {
   try {
-    const {_id, favorite} = req.body;
-    const filter = await database.addToFavorites(_id, favorite);
+    const {username, favorite} = req.body;
+    const filter = await database.addToFavorites(username, favorite);
     res.send(JSON.stringify(filter));
   }catch(err){
     console.log(err);
@@ -155,6 +156,18 @@ app.post("/getResults", async (req, res) => {
     res.send(filter);
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
+  }
+});
+
+app.put("/updatename", async(req,res) =>{
+  try{
+    const {_id, name} = req.body;
+    console.log({_id, name});
+    const account = await database.updateUserName(_id, name);
+    res.send(JSON.stringify(account));
+  }
+  catch(err){
     res.status(500).send(err);
   }
 });
