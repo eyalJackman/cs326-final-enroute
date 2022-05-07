@@ -117,8 +117,8 @@ app.get("/", (req, res) => {
 
 app.post("/createUser", async (req, res) => {
   try {
-    const { user, password, fullname, email, phonenumber } = req.body;
-    const account = await database.createUser(user, password, fullname, email, phonenumber);
+    const { user, password, fullname, email, phonenumber, favorites } = req.body;
+    const account = await database.createUser(user, password, fullname, email, phonenumber, favorites);
     res.send(JSON.stringify(account));
   } catch (err) {
     res.status(500).send(err);
@@ -132,6 +132,17 @@ app.post("/checkUser", async (req, res) => {
     // console.log(validUser);
     res.send(JSON.stringify(validUser));
   } catch (err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
+});
+
+app.post("/addtofavorites", async (req, res) => {
+  try {
+    const {_id, favorite} = req.body;
+    const filter = await database.addToFavorites(_id, favorite);
+    res.send(JSON.stringify(filter));
+  }catch(err){
     console.log(err);
     res.status(500).send(err);
   }

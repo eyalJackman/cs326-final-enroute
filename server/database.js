@@ -25,8 +25,8 @@ export class Database {
     this.client.close();
   }
   //add a new user
-  async createUser(username, password, fullname, email, phonenumber) {
-    const res = await this.collection_users.insertOne({ username, password, fullname, email, phonenumber });
+  async createUser(username, password, fullname, email, phonenumber, favorites) {
+    const res = await this.collection_users.insertOne({ username, password, fullname, email, phonenumber, favorites});
     return res;
   }
   //read a user
@@ -59,6 +59,15 @@ export class Database {
       .forEach((obj) => arr.push(obj));
     console.log(`Results: ${arr}`);
     return arr;
+  }
+
+  async addToFavorites(_id, favorite){
+    const res = await this.collection_users.updateOne(
+        {_id: _id},
+        {$push: {favorites: favorite}}
+    );
+    console.log(res);
+    return res;
   }
 
   // // update user name

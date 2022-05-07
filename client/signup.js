@@ -1,5 +1,6 @@
 async function saveUser(user,password, fullname, email, phonenumber) {
-    const data = JSON.stringify({ user, password, fullname, email, phonenumber });
+  const favorites = [];
+    const data = JSON.stringify({ user, password, fullname, email, phonenumber, favorites });
     const response = await fetch('/createUser', {
       method: 'POST',
       headers: {
