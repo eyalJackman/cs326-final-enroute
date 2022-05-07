@@ -41,6 +41,9 @@ async function destinationsCRUD(region, season, weather, vacation_type){
     const data = JSON.stringify({region, season, weather, vacation_type});
     const response = await fetch('/getResults', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: data
     });
     if (!response.ok) {
@@ -66,7 +69,7 @@ searchButton.addEventListener("click", (event) => {
   console.log(weather);
   console.log(vacation_type);
   console.log("this work");
-  let destination = destinationsCRUD(region, season, weather, vacation_type).then(console.log);
+  let destination = destinationsCRUD(region, season, weather, vacation_type);
   console.log(destination);
   const searchRes = new SearchResults(destination);
   searchRes.render(document.getElementById("searchResults"));
