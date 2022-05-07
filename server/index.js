@@ -1,7 +1,7 @@
 import express from "express";
 import { Database } from "./database.js";
 import * as url from "url";
-import logger from "morgan"
+// import logger from "morgan"
 
 
 // class Server {
@@ -137,39 +137,39 @@ app.post("/checkUser", async(req, res) => {
     }
 });
 
-app.post("/saveFilter", async(req, res) => {
-    try {
-        const { region, season, weather, vacation_type } = req.body;
-        const filter = await self.db.saveFilter(
-            region,
-            season,
-            weather,
-            vacation_type
-        );
-        res.send(JSON.stringify(filter));
-    } catch (err) {
-        res.status(500).send(err);
-    }
-});
+// app.post("/saveFilter", async(req, res) => {
+//     try {
+//         const { region, season, weather, vacation_type } = req.body;
+//         const filter = await self.db.saveFilter(
+//             region,
+//             season,
+//             weather,
+//             vacation_type
+//         );
+//         res.send(JSON.stringify(filter));
+//     } catch (err) {
+//         res.status(500).send(err);
+//     }
+// });
 
 
 
-app.post("/getResults", async(req, res) => {
-    try {
-        const parsedURL = url.parse(req.url, true);
-        const { region, season, weather, vacation_type } = parsedURL.query;
-        const filter = await self.db.getResults(
-            region,
-            season,
-            weather,
-            vacation_type
-        );
-        // res.send(JSON.stringify(parsedURL.query));
-        res.send(JSON.stringify(filter));
-    } catch (err) {
-        res.status(500).send(err);
-    }
-});
+// app.post("/getResults", async(req, res) => {
+//     try {
+//         const parsedURL = url.parse(req.url, true);
+//         const { region, season, weather, vacation_type } = parsedURL.query;
+//         const filter = await self.db.getResults(
+//             region,
+//             season,
+//             weather,
+//             vacation_type
+//         );
+//         // res.send(JSON.stringify(parsedURL.query));
+//         res.send(JSON.stringify(filter));
+//     } catch (err) {
+//         res.status(500).send(err);
+//     }
+// });
 
 
 
