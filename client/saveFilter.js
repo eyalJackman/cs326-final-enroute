@@ -14,13 +14,8 @@ const ls = window.localStorage;
 //     console.error(`Unable to save ${data} to server`);
 //   }
 // }
-
-let obj = { region: "test", season: " test" };
-const saveFilter = (obj) => {
-  ls.getItem("filter");
-  ls.setItem("filter", JSON.stringify(obj));
-  console.log(ls.getItem("filter"));
-};
+// localStorage.setItem("key", "value");
+// let obj = { region: "test", season: " test" };
 
 const searchButton = document.getElementById("search");
 
@@ -28,10 +23,8 @@ searchButton.addEventListener("click", async () => {
   const regionOption = document.getElementById("region");
   const seasonOption = document.getElementById("season");
   const weatherOption = document.getElementById("weather");
-  const vacationTypeOption = document.getElementById("vacation_type");
-  console.log("search button clicked");
+  const vacationTypeOption = document.getElementById("vacation");
   let region = regionOption.value;
-  console.log(region);
   let season = seasonOption.value;
   let weather = weatherOption.value;
   let vacationType = vacationTypeOption.value;
@@ -44,8 +37,10 @@ searchButton.addEventListener("click", async () => {
     alert(`Please Add Filters`);
     return;
   } else {
-    let filter = saveFilter({ region, season, weather, vacationType });
-    ls.setItem("test", "value");
+    localStorage.setItem(
+      "filter",
+      JSON.stringify({ region, season, weather, vacationType })
+    );
   }
 });
 
