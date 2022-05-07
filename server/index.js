@@ -87,7 +87,8 @@ import * as url from "url";
 
 const getDatabase = async () => {
   try {
-    const database = new Database(process.env.MONGODB_URI);
+    // const database = new Database(process.env.MONGODB_URI);
+    const database = new Database("mongodb+srv://dgondalia:dgondalia@cluster0.db7at.mongodb.net/Clustor0?retryWrites=true&w=majority");
     await database.connect();
     return database;
   } catch (err) {
@@ -95,7 +96,7 @@ const getDatabase = async () => {
   }
 };
 
-const database = getDatabase();
+const database = await getDatabase();
 
 const app = express();
 const port = 3000;
@@ -117,7 +118,7 @@ app.get("/", (req, res) => {
 app.post("/createUser", async (req, res) => {
   try {
     const { user, password } = req.body;
-    const account = await self.db.createUser(user, password);
+    const account = await database.createUser(user, password);
     res.send(JSON.stringify(account));
   } catch (err) {
     res.status(500).send(err);
@@ -127,7 +128,7 @@ app.post("/createUser", async (req, res) => {
 app.post("/checkUser", async (req, res) => {
   try {
     const { user, password } = req.body;
-    const validUser = await self.db.findUser(user, password);
+    const validUser = await database.findUser(user, password);
     res.send(validUser);
   } catch (err) {
     res.status(500).send(err);
@@ -137,7 +138,7 @@ app.post("/checkUser", async (req, res) => {
 app.post("/saveFilter", async (req, res) => {
   try {
     const { region, season, weather, vacation_type } = req.body;
-    const filter = await self.db.saveFilter(
+    const filter = await database.saveFilter(
       region,
       season,
       weather,
@@ -151,17 +152,12 @@ app.post("/saveFilter", async (req, res) => {
 
 app.post("/getResults", async (req, res) => {
   try {
-    const parsedURL = url.parse(req.url, true);
-    const { region, season, weather, vacation_type } = parsedURL.query;
-    const filter = await self.db.getResults(
-      region,
-      season,
-      weather,
-      vacation_type
-    );
-    // res.send(JSON.stringify(parsedURL.query));
+    const { region, season, weather, vacation_type } = req.body;
+    const filter = await database.getResults(region, season, weather, vacation_type);
+    console.log(filter)
     res.send(JSON.stringify(filter));
   } catch (err) {
+    console.log(err);
     res.status(500).send(err);
   }
 });

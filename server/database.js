@@ -51,7 +51,8 @@ export class Database {
 
   async getResults(region, season, weather, vacation_type) {
     const arr = [];
-    const ret = await this.collection_destinations
+    
+    await this.collection_destinations
       .find({
         region,
         season,

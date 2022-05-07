@@ -39,6 +39,7 @@ const searchButton = document.getElementById('search');
 
 async function destinationsCRUD(region, season, weather, vacation_type){
     const data = JSON.stringify({region, season, weather, vacation_type});
+    console.log(data);
     const response = await fetch('/getResults', {
         method: 'POST',
         headers: {
@@ -47,7 +48,7 @@ async function destinationsCRUD(region, season, weather, vacation_type){
         body: data
     });
     if (!response.ok) {
-        console.error(`Unable to save ${data} to server`);
+        console.error(`Unable to get ${data} from the server`);
     }
     return response;
 }
