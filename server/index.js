@@ -117,25 +117,25 @@ app.get("/", (req, res) => {
     res.sendFile("client/home.html", { root: "./" });
 });
 
-app.post("/createUser", async(req, res) => {
-    try {
-        const { user, password } = req.body;
-        const account = await self.db.createUser(user, password);
-        res.send(JSON.stringify(account));
-    } catch (err) {
-        res.status(500).send(err);
-    }
-});
+// app.post("/createUser", async(req, res) => {
+//     try {
+//         const { user, password } = req.body;
+//         const account = await self.db.createUser(user, password);
+//         res.send(JSON.stringify(account));
+//     } catch (err) {
+//         res.status(500).send(err);
+//     }
+// });
 
-app.post("/checkUser", async(req, res) => {
-    try {
-        const { user, password } = req.body;
-        const validUser = await self.db.findUser(user, password);
-        res.send(validUser);
-    } catch (err) {
-        res.status(500).send(err);
-    }
-});
+// app.post("/checkUser", async(req, res) => {
+//     try {
+//         const { user, password } = req.body;
+//         const validUser = await self.db.findUser(user, password);
+//         res.send(validUser);
+//     } catch (err) {
+//         res.status(500).send(err);
+//     }
+// });
 
 // app.post("/saveFilter", async(req, res) => {
 //     try {
