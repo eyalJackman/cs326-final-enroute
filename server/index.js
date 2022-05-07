@@ -108,7 +108,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //Add the morgan middleware to the app.
-app.use(logger("dev"));
+// app.use(logger("dev"));
 
 // Add the express.static middleware to the app.
 app.use(express.static("client"));
