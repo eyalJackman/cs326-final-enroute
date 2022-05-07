@@ -27,7 +27,7 @@ class Server {
       try {
         const { user, password } = req.body;
         const validUser = await self.db.findUser(user, password);
-        res.send(JSON.stringify(validUser));
+        res.send(validUser);
       } catch (err) {
         res.status(500).send(err);
       }
