@@ -3,74 +3,61 @@
 const searchButton = document.getElementById("search");
 
 async function destinationsCRUD(region, season, weather, vacation_type) {
-    const data = JSON.stringify({ region, season, weather, vacation_type });
-    // return data;
-    const response = await fetch("/getResults", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: data,
-    });
-    // alert("working until here");
-    if (!response.ok) {
-        console.error(`Unable to get ${data} from the server`);
-    }
-    return response;
+  const data = JSON.stringify({ region, season, weather, vacation_type });
+  // return data;
+  const response = await fetch("/getResults", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: data,
+  });
+  // alert("working until here");
+  if (!response.ok) {
+    console.error(`Unable to get ${data} from the server`);
+  }
+  // if (response.ok) response.json().then((res) => alert(res[0]["name"]));
+
+  const ret = await response.json();
+  return ret;
 }
 
-searchButton.addEventListener("click", async(ev) => {
-    ev.preventDefault();
-    const regionOption = document.getElementById("region");
-    const seasonOption = document.getElementById("season");
-    const weatherOption = document.getElementById("weather");
-    const vacationTypeOption = document.getElementById("vacation");
-    let region = regionOption.value;
-    let season = seasonOption.value;
-    let weather = weatherOption.value;
-    let vacationType = vacationTypeOption.value;
-    if (
-        region === "Region" ||
-        season === "Season" ||
-        weather === "Weather" ||
-        vacationType === "Vacation Type"
-    ) {
-        return;
-    } else {
-        localStorage.removeItem("filter");
-        localStorage.setItem(
-            "filter",
-            JSON.stringify({ region, season, weather, vacationType })
-        );
-        const test = await destinationsCRUD(
-            region,
-            season,
-            weather,
-            vacationType
-        ).then((res) => alert(JSON.stringify(res)));
-        // alert(test);
-        const destinations = await destinationsCRUD(
-            region,
-            season,
-            weather,
-            vacationType
-        );
-        alert("test");
-        localStorage.removeItem("destinations");
-        // Promise.resolve().then(() => {
-        //     localStorage.setItem("destinations", destinations);
-        // });
-        if (destinations.ok) {
-            await null;
-            localStorage.setItem(
-                "destinations",
-                destinations
-                // JSON.stringify(
-                // )
-            );
-        }
-    }
-    window.location.href = "./results.html";
+searchButton.addEventListener("click", async (ev) => {
+  ev.preventDefault();
+  const regionOption = document.getElementById("region");
+  const seasonOption = document.getElementById("season");
+  const weatherOption = document.getElementById("weather");
+  const vacationTypeOption = document.getElementById("vacation");
+  let region = regionOption.value;
+  let season = seasonOption.value;
+  let weather = weatherOption.value;
+  let vacationType = vacationTypeOption.value;
+  if (
+    region === "Region" ||
+    season === "Season" ||
+    weather === "Weather" ||
+    vacationType === "Vacation Type"
+  ) {
+    return;
+  } else {
+    localStorage.removeItem("filter");
+    localStorage.setItem(
+      "filter",
+      JSON.stringify({ region, season, weather, vacationType })
+    );
+
+    localStorage.removeItem("destinations");
+
+    const destinations = await destinationsCRUD(
+      region,
+      season,
+      weather,
+      vacationType
+    ).then(function (res) {
+      localStorage.setItem("destinations", JSON.stringify(res));
+    });
+  }
+  window.location.href = "./results.html";
 });
 
 // searchButton.addEventListener("click", async (event) => {
