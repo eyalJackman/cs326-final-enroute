@@ -18,7 +18,30 @@
     <title>Contact Us</title>
 </head>
 
-<include src="header.html"></include>
+<header 
+  class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom header">
+  <img id="logo_image" alt="Logo" class="img-thumbnail float-left" src="https://i.imgur.com/3os4v9T.png" />
+
+  <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+    <li><a href="index.html" class="nav-link px-2 link-secondary">Home</a></li>
+    <li>
+      <a href="userProfile.html" class="nav-link px-2 link-dark">Favorites</a>
+    </li>
+    <!-- TODO Need To add FAQS page -->
+    <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
+    <!-- TODO Need To add About page -->
+    <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
+  </ul>
+
+  <div class="float-right">
+    <span class="material-icons md-36 md-dark account-icon">account_circle</span>
+    <a href="login.html" type="button" id="login_button_header" class="btn btn-outline-primary me-2">Login</a>
+    <a href="signup.html" type="button" id="signup_button_header" class="btn btn-outline-primary ">Sign-up</a>
+    <a href="index.html" type="button" id="logout_button_header" class="btn btn-outline-primary me-2">Logout</a>
+  </div>
+  <script type="module" src="header.js"></script>
+  <script type="module" src="login.js"></script>
+</header>
 
 <body>
     <div class="box">

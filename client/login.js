@@ -1,5 +1,4 @@
-import { changeHeader } from "./header.js";
-
+import { checkVisibility } from "./header.js";
 /**
  * @type {boolean}
  * @description Checks whether a user is logged in
@@ -50,8 +49,9 @@ if (loginButton) {
         user_information["id"] = userRequest["_id"];
         user_information["username"] = userRequest["username"];
         user_information["password"] = userRequest["password"];
-        //window.location.href = "./index.html";
-        changeHeader(true);
+        localStorage.setItem("user_infromation", user_information);
+        window.location.href = "./index.html";
+        checkVisibility();
         return;
       } else {
         alert(`Incorrect Account Entered`);
@@ -64,10 +64,11 @@ if (loginButton) {
 let logOutButton = document.getElementById("logout_button_header");
 if (logOutButton.hidden === false) {
   logOutButton.addEventListener("click", () => {
-    localStorage.setItem("userid", null);
+    console.log("clicked logout button");
+    localStorage.setItem("userid", "null");
     login = false;
     user_information = {};
-    changeHeader(false);
+    checkVisibility();
   });
 }
 
