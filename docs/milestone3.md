@@ -31,7 +31,7 @@ users document
 ## Work Breakdown
 Manan: Created `database.js` and some CRUD operations and express routes 
 
-Darsh: Created MongoDB database and collections on MongoDB, and `addToFavorites`
+Darsh: Created MongoDB database and collections on MongoDB, and `addToFavorites`, created and debugged search results.
 
 Eyal : Standardized destinations document and created `getResults` route/CRUD operations relating to it
 
