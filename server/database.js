@@ -25,13 +25,29 @@ export class Database {
             this.client.close();
         }
         //add a new user
-    async createUser(username, password, fullname, email, phonenumber, favorites) {
-            const res = await this.collection_users.insertOne({ username, password, fullname, email, phonenumber, favorites });
+    async createUser(
+            username,
+            password,
+            fullname,
+            email,
+            phonenumber,
+            favorites
+        ) {
+            const res = await this.collection_users.insertOne({
+                username,
+                password,
+                fullname,
+                email,
+                phonenumber,
+                favorites,
+            });
             return res;
         }
         //read a user
     async findUser(username, password) {
-        const res = await this.collection_users.find({ username, password }).toArray();
+        const res = await this.collection_users
+            .find({ username, password })
+            .toArray();
         return res;
     }
 
@@ -46,20 +62,16 @@ export class Database {
         return res;
     }
 
-  async getResults(region, season, weather, vacation_type) {
-    const arr = [];
+    async getResults(region, season, weather, vacation_type) {
+        const arr = [];
         const test = await this.collection_destinations
             .find({
                 region,
                 season,
                 weather,
                 vacation_type,
-            }).toArray()
-            // .forEach((obj) => arr.push(obj));
-        console.log(`Results: ${arr}`);
-        arr.forEach(console.log)
-            // return arr;
-            // console.log(typeof test[0]["season"])
+            })
+            .toArray();
         return test;
     }
 

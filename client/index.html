@@ -23,7 +23,29 @@
     <script type="module" src="saveFilter.js"></script>
     <title>enRoute</title>
 </head>
-<include src="header.html"></include>
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom header">
+    <img id="logo_image" alt="Logo" class="img-thumbnail float-left" src="https://i.imgur.com/3os4v9T.png" />
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="index.html" class="nav-link px-2 link-secondary">Home</a></li>
+        <li>
+            <a href="userProfile.html" class="nav-link px-2 link-dark">Favorites</a>
+        </li>
+        <!-- TODO Need To add FAQS page -->
+        <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
+        <!-- TODO Need To add About page -->
+        <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
+    </ul>
+
+    <div class="float-right">
+        <span class="material-icons md-36 md-dark account-icon">account_circle</span>
+        <a href="login.html" type="button" id="login_button_header" class="btn btn-outline-primary me-2">Login</a>
+        <a href="signup.html" type="button" id="signup_button_header" class="btn btn-outline-primary ">Sign-up</a>
+        <a href="index.html" type="button" id="logout_button_header" class="btn btn-outline-primary me-2">Logout</a>
+    </div>
+    <script type="module" src="header.js"></script>
+    <script type="module" src="login.js"></script>
+</header>
 
 <body class="min-vh-100 d-flex flex-column 
 justify-content-between">
@@ -48,7 +70,7 @@ justify-content-between">
       </div>
             <br />
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
+              <ol class="carousel-indicators" id="carousel-indics">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
@@ -80,12 +102,13 @@ justify-content-between">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
               </a>
-              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-          </div>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
     </center>
     <include src="footer.html"></include>
 </body>
+
 </html>

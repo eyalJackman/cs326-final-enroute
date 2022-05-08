@@ -1,5 +1,4 @@
-// import { changeHeader } from "./header.js";
-
+import { checkVisibility } from "./header.js";
 /**
  * @type {boolean}
  * @description Checks whether a user is logged in
@@ -42,22 +41,35 @@ if (loginButton) {
       console.log(userRequest);
       if (userRequest) {
         localStorage.setItem("userid", username.value);
-
+        console.log(userRequest);
         username.value = "";
         password.value = "";
         // alert(`Your Are Logged In!`);
+        console.log("User is LoggedIn");
         login = true;
         user_information["id"] = userRequest["_id"];
         user_information["username"] = userRequest["username"];
         user_information["password"] = userRequest["password"];
+        localStorage.setItem("user_infromation", user_information);
         window.location.href = "./index.html";
-        // changeHeader();
+        checkVisibility();
         return;
       } else {
         alert(`Incorrect Account Entered`);
         return;
       }
     }
+  });
+}
+
+let logOutButton = document.getElementById("logout_button_header");
+if (logOutButton.hidden === false) {
+  logOutButton.addEventListener("click", () => {
+    console.log("clicked logout button");
+    localStorage.setItem("userid", "null");
+    login = false;
+    user_information = {};
+    checkVisibility();
   });
 }
 

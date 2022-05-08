@@ -1,4 +1,3 @@
-import data from "./mockDatabase.js";
 
 const information = document.getElementById("destination_information");
 const img = document.getElementById("destination_image");
@@ -9,37 +8,91 @@ const name = document.getElementById("destination_name");
  * @returns void
  * @description This will render the first 100 words and an image of whatever destination is said to it. This will be sent to desination.html
  */
-const addDestination = async(destination) => {
-    // Image
-    const imgPath = `./images/${destination["image"]}`;
-    img.setAttribute("src", imgPath);
+const addDestination = async (destination) => {
+  // Image
+  console.log(typeof destination);
 
-    // Description
-    const correctFormat = destination["name"].split(" ").join("%20"); //Boston
-    const url = `https://en.wikipedia.org/w/api.php?origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${correctFormat}`;
-    const response = await fetch(url);
+  const imgPath = destination["img"];
+  img.setAttribute("src", imgPath);
 
-    let extract;
-    await response
-        .json()
-        .then((obj) => {
-            const pages = obj["query"]["pages"];
-            for (const entry in pages) {
-                extract = pages[entry]["extract"];
-            }
-        })
-        .catch((err) => console.log(err));
-    if (response.ok) {
-        information.innerHTML = JSON.stringify(extract);
-    }
-    name.appendChild(document.createTextNode(destination["name"]));
+  // Description
+  console.log(destination["name"]);
+  const correctFormat = destination["name"].split(" ").join("%20"); //Boston
+  const url = `https://en.wikipedia.org/w/api.php?origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${correctFormat}`;
+  const response = await fetch(url);
+
+  let extract;
+  await response
+    .json()
+    .then((obj) => {
+      const pages = obj["query"]["pages"];
+      for (const entry in pages) {
+        extract = pages[entry]["extract"];
+      }
+    })
+    .catch((err) => console.log(err));
+  if (response.ok) {
+    information.innerHTML = JSON.stringify(extract);
+  }
+  name.appendChild(document.createTextNode(destination["name"]));
 };
-const randDest = data[Math.floor(Math.random() * data.length)];
-addDestination(randDest);
+const dest = localStorage.getItem("load");
+console.log(JSON.parse(dest));
+addDestination(JSON.parse(dest));
 
-/*
-    For now, it just works with destionation.html, showing random information from 3 places. 
-    This will be expanded to return an HTML file depending on the location, using the database later on.
-*/
+const getDescription = async (name) => {
+  const correctFormat = name.split(" ").join("%20");
+  const url = `https://en.wikipedia.org/w/api.php?origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${correctFormat}`;
+  const response = await fetch(url);
+
+  let extract;
+  await response
+    .json()
+    .then((obj) => {
+      const pages = obj["query"]["pages"];
+      for (const entry in pages) {
+        extract = pages[entry]["extract"];
+      }
+    })
+    .catch((err) => console.log(err));
+  if (response.ok) {
+    return JSON.stringify(extract);
+  }
+};
+
+const addToFavoriteButton = document.getElementById("favorite");
+
+async function addToFavorite(username, location) {
+  const data = JSON.stringify({ username, location });
+  const response = await fetch("/addtofavorites", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: data,
+  });
+  if (!response.ok) {
+    console.error(`Unable to save ${data} to server`);
+  }
+  return;
+}
+
+addToFavoriteButton.addEventListener("click", async () => {
+//   console.log(login);
+//   console.log(user_information);
+  const parent = addToFavoriteButton.parentElement;
+  const children = parent.children;
+
+  // console.log(user_information["_id"]);
+  // https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_node_childnodes2  refer to this
+  // to understand the children
+  //parent div--> {h5, button, div}
+  // look up ways to get the html...
+  const username = localStorage.getItem("userid");
+  await addToFavorite(username, children[0].textContent);
+  console.log("this work");
+});
+
 
 export default addDestination;
+export { getDescription };
