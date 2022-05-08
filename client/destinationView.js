@@ -9,7 +9,7 @@ const name = document.getElementById("destination_name");
  */
 const addDestination = async(destination) => {
     // Image
-    if (image === null) {
+    if (img === null) {
         return;
     }
     console.log(typeof destination);
