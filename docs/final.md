@@ -14,12 +14,90 @@
 
 
 ### User Interface
+- **Homepage** (`index.html`) - The purpose of this view is to access the filter and to send a request to get the results.
+
+![index.html](https://i.imgur.com/BF1imye.jpeg)
+
+- **Results Page** (`results.html`) - Gives a list of the best places to travel to given the filter. This also allows for a new search.
+
+![Results](https://i.imgur.com/JTtn9ns.png)
+
+- **Login Page** (`login.html`) - This page is used to login in order to save your favorite locations and load them in.
+
+![](https://i.imgur.com/GZEBzfn.png)
+
+- **Sign-up Page** (`signup.html`) - This page is responsible for signing up the user.
+
+![](https://i.imgur.com/zOlTe0W.png)
+
+
+- **Contact Us Page** (`contact_us.html`) - A page to contact us
+
+![](https://i.imgur.com/RDpC2bj.png)
 
 ### API
+Login Information:
+- `POST /createUser`
+  - `body: {user, password, fullname, email, phone}`
+  - Sends user information to MongoDB
+- `POST /checkUser`
+  - `body: {user, password}`
+  - Checks to make sure that user information is inside MongoDB
+
+Search Results:
+- `POST /addtofavorites`
+  - `body: {username, favorite}`
+  - Adds favorite destination to user’s personal list of destinations
+- `POST /getResults`
+  - `body: {region, season, weather, vacation_type}`
+  - Returns a list of possible destinations based on the filter’s values
+- `PUT /updatename`
+  - `body: {_id , name}`
+  - Updates User’s name in the database
+- `PUT /updatepassword`
+  - `body: {_id , password}`
+  - Updates User’s password in the database
+- `PUT /updatemail`
+  - `body: {_id , mail}`
+  - Updates User’s email in the database
+
+### Database
+The `destinations` document represents the properties of each destination.
+
+```
+destinations document
+{
+    _id: <ObjectId1>,
+    name: String, // name of destination
+    region: String, // destination's region
+    season: String, // current season
+    weather: String, // preferred weather
+    vacation_type: String, // Preferred type of vacation
+    img: String, // URL of destination's image
+}
+```
+
+The `users` document represents the properties of each user.
+```
+users document
+{
+    _id: <ObjectId1>, 
+    username: String,  // User's username
+    password: String,  // User's password
+    fullname: String,  // User's full name
+    email: String,     // User's email
+    phonenumber: Double, // User's phone number
+    favorites: String[]  // A list of destination names favorited by the user (this corresponds to the name of the destination document)
+}
+```
+
 
 
 ### URL Routes/Mappings
-- `/` and `/index.html` - Home page
+- `/` - Leads to the home page
+- `/login` - Leads to the login page
+- `/register` - Leads to the sign-up page
+- `/contact` - Leads to the Contact Us page
 
 ### Authentication/Authorization
 
@@ -43,6 +121,26 @@ Eyal:
 - Fixed routes after login
 - milestone3.md
 - Style cleanup
+- Set up Static Routes
 - Helped with authentication
 
+Simona Zilberberg:
+- Website Mockup
+- Collaborated to develop concept
+- Index.html:
+  - Header bar 
+  - Login , sign up , and logout buttons and functionality (login.js and header.js)
+  - Filter bar
+  - tempFilter functionality to save the current filter in an object to put into a JSON file
+  - Photo Carosel 
+- userProfile.html
+- Login.html
+- Signup.html
+- Index.js:
+  - createUser
+  - getResults
+  - checkUser
+- Overall code clean up
+
 ## Conclusion
+

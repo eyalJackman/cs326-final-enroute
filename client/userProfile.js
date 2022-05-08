@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import { login } from "./login.js";
+=======
+// import {SearchResults} from "/searchResults.js";
+import { FavoriteRender } from "./favoriteRender.js";
+>>>>>>> 080883d637f91f49dd9ce2a31051183dbeebbf6a
 const name_button = document.getElementById('ChangeName');
 const userid = localStorage.getItem("userid");
 
@@ -52,7 +57,7 @@ async function updateUserEmail(userid, email) {
 
 
 const email_button = document.getElementById("ChangeEmail");
-
+if(email_button)
 email_button.addEventListener("click", async () =>{
     const new_email = document.getElementById("change_email");
     let email_req = await updateUserEmail(userid, new_email.value);
@@ -67,7 +72,7 @@ email_button.addEventListener("click", async () =>{
 });
 
 const pass_button = document.getElementById("ChangePass");
-
+if(pass_button)
 pass_button.addEventListener("click", async () => {
     const new_pass = document.getElementById('change_pass');
     let pass_req = await updateUserPassword(userid ,new_pass.value);
@@ -80,9 +85,13 @@ pass_button.addEventListener("click", async () => {
         alert('failed to update Password');
     }
 });
+<<<<<<< HEAD
 
 const name_label = document.getElementById('name_label');
 
+=======
+if(name_button)
+>>>>>>> 080883d637f91f49dd9ce2a31051183dbeebbf6a
 name_button.addEventListener("click", async () => {
     const new_name = document.getElementById('change_name');
     let name_req = await updateUserName(userid ,new_name.value);
@@ -97,4 +106,53 @@ name_button.addEventListener("click", async () => {
     }
 });
 
+<<<<<<< HEAD
 name_label.innerText = userid;
+=======
+
+// //get destinations by name returns an array of objects to be rendered
+
+async function getFavorites(username){
+    const data = JSON.stringify({username});
+    const response = await fetch('/getfavoritearray', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: data
+    });
+    return JSON.stringify(response);
+}
+function renderfavorites(array){
+    const favPlaces = document.getElementById("favoritesLoad");
+    const render = new FavoriteRender(array);
+    render.render(favPlaces);
+  }
+
+
+
+// //get the array
+
+const userbutton = document.getElementById("userprofile");
+
+if(userbutton)
+userbutton.addEventListener("click", async ()=>{
+    const user = localStorage.getItem("userid");
+    const arr = await getFavorites(user);
+    renderfavorites(arr);
+    console.log(arr);
+});
+// const favorite = JSON.parse(currFav);
+
+// const favoriteSection = document.getElementById("favoritesLoad");
+
+// console.log(favorite);
+
+// const loadDestinations = (favorite) => {
+//   const results = new SearchResults(favorite);
+//   console.log(results);
+//   results.render(favoriteSection);
+// };
+
+// loadDestinations(favorite);
+>>>>>>> 080883d637f91f49dd9ce2a31051183dbeebbf6a

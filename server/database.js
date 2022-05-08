@@ -50,7 +50,6 @@ export class Database {
             .toArray();
         return res;
     }
-
     //save filter
     async saveFilter(region, season, weather, vacationType) {
         const res = await this.collection_filters.insertOne({
@@ -84,6 +83,15 @@ export class Database {
     return res;
   }
 
+  async getFavoriteArray(username){
+    const res = await this.collection_users.find({username}).toArray();
+    return res;
+  }
+
+  async getFavoriteDestination(name){
+    const res = await this.collection_destinations.find({name}).toArray();
+    return res;
+  }
     // // update user name
     async updateUserName(userid, name){
       const res = await this.collection_users.update({username: userid }, {$set: {username: name}});
