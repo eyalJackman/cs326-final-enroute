@@ -62,10 +62,10 @@ const getDescription = async (name) => {
 
 const addToFavoriteButton = document.getElementById("favorite");
 
-async function addToFavorite(username, location) {
-  const data = JSON.stringify({ username, location });
+async function addToFavorite(username, favorite) {
+  const data = JSON.stringify({ username, favorite });
   const response = await fetch("/addtofavorites", {
-    method: "POST",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
@@ -74,7 +74,7 @@ async function addToFavorite(username, location) {
   if (!response.ok) {
     console.error(`Unable to save ${data} to server`);
   }
-  return;
+  return response.json();
 }
 
 addToFavoriteButton.addEventListener("click", async () => {
@@ -89,8 +89,12 @@ addToFavoriteButton.addEventListener("click", async () => {
   //parent div--> {h5, button, div}
   // look up ways to get the html...
   const username = localStorage.getItem("userid");
-  await addToFavorite(username, children[0].textContent);
+  console.log(children[0].textContent);
+  const fav = children[0].textContent;
+  const favs = await addToFavorite(username, fav);
+  console.log(favs);
   console.log("this work");
+
 });
 
 

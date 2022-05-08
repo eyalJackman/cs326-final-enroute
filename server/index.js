@@ -138,10 +138,11 @@ app.post("/checkUser", async (req, res) => {
   }
 });
 
-app.post("/addtofavorites", async (req, res) => {
+app.put("/addtofavorites", async (req, res) => {
   try {
     const {username, favorite} = req.body;
     const filter = await database.addToFavorites(username, favorite);
+    console.log(filter);
     res.send(JSON.stringify(filter));
   }catch(err){
     console.log(err);

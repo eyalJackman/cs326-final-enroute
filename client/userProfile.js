@@ -1,4 +1,5 @@
-import { login, user_information } from "./login";
+import {SearchResults} from "searchResults.js";
+
 const name_button = document.getElementById('ChangeName');
 
 async function updateUserName(user, name) {
@@ -30,3 +31,26 @@ name_button.addEventListener("click", async()=>{
         alert('failed to update UserName');
     }
 });
+
+
+// //get destinations by name returns an array of objects to be rendered
+
+
+// //get the array
+// const user = localStorage.getItem("userid");
+
+
+
+// const favorite = JSON.parse(currFav);
+
+// const favoriteSection = document.getElementById("favoritesLoad");
+
+// console.log(favorite);
+
+// const loadDestinations = (favorite) => {
+//   const results = new SearchResults(favorite);
+//   console.log(results);
+//   results.render(favoriteSection);
+// };
+
+// loadDestinations(favorite);
