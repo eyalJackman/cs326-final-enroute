@@ -144,5 +144,16 @@ Simona Zilberberg:
   - checkUser
 - Overall code clean up
 
+Darsh Gondalia:
+- Add to favorites:
+  - All functionality, index.js, database.js
+- Search results:
+  - Debugging all of the functionality
+  - Rendering to search results page functionality
+- login and signup page: 
+  - Debug and replace dysfunctional functions and elements
+  - Saving and checking login via mongoDB function
+- Most of the debugging and replacing of dysfunctional code
+
 ## Conclusion
 - The team's experience was very positive. Each of us learned a lot about front-end and back-end development, and the connection between them. We learned how to work on a team, building our codebase off of other people and learning to use `git` in an intelligent manner. Before starting the project, it would have helped to know all of the different web programming concepts before. If we start a brand new project today, it would go a lot smoother because the connections of how everything works is significantly clearer now, but that is the point of the project. We ran into a few merge errors, a lot of H10 heroku errors, and some HTTP request failures. We encountered some difficulty being able to work as a unit because we had overlap in our work and ideas that led to some difference in opinions, but we were able to sort them out.
