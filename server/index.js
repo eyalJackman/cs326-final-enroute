@@ -86,15 +86,17 @@ import * as url from "url";
 // const server = new Server(process.env.MONGODB_URI);
 // server.start();
 
-const getDatabase = async () => {
-  try {
-    // const database = new Database(process.env.MONGODB_URI);
-    const database = new Database("mongodb+srv://dgondalia:dgondalia@cluster0.db7at.mongodb.net/Clustor0?retryWrites=true&w=majority");
-    await database.connect();
-    return database;
-  } catch (err) {
-    console.log(err);
-  }
+const getDatabase = async() => {
+    try {
+        // const database = new Database(process.env.MONGODB_URI);
+        const database = new Database(
+            "mongodb+srv://dgondalia:dgondalia@cluster0.db7at.mongodb.net/Clustor0?retryWrites=true&w=majority"
+        );
+        await database.connect();
+        return database;
+    } catch (err) {
+        console.log(err);
+    }
 };
 
 const database = await getDatabase();
@@ -113,42 +115,62 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static("client"));
 
 app.get("/", (req, res) => {
-  res.sendFile("client/home.html", { root: "./" });
+    res.sendFile("client/home.html", { root: "./" });
 });
 
-app.post("/createUser", async (req, res) => {
-  try {
-    const { user, password, fullname, email, phonenumber, favorites } = req.body;
-    const account = await database.createUser(user, password, fullname, email, phonenumber, favorites);
-    res.send(JSON.stringify(account));
-  } catch (err) {
-    res.status(500).send(err);
-  }
+app.get("/contact", (req, res) => {
+    res.sendFile("client/contact_us.html", { root: "./" });
 });
 
-app.post("/checkUser", async (req, res) => {
-  try {
-    const {username, password} = req.body;
-    console.log(username);
-    const validUser = await database.findUser(username, password);
-    console.log(validUser);
-    res.send(JSON.stringify(validUser));
-  } catch (err) {
-    console.log(err);
-    res.status(500).send(err);
-  }
+app.get("/login", (req, res) => {
+    res.sendFile("client/login.html", { root: "./" });
 });
 
-app.put("/addtofavorites", async (req, res) => {
-  try {
-    const {username, favorite} = req.body;
-    const filter = await database.addToFavorites(username, favorite);
-    console.log(filter);
-    res.send(JSON.stringify(filter));
-  }catch(err){
-    console.log(err);
-    res.status(500).send(err);
-  }
+app.get("/register", (req, res) => {
+    res.sendFile("client/signup.html", { root: "./" });
+});
+
+app.post("/createUser", async(req, res) => {
+    try {
+        const { user, password, fullname, email, phonenumber, favorites } =
+        req.body;
+        const account = await database.createUser(
+            user,
+            password,
+            fullname,
+            email,
+            phonenumber,
+            favorites
+        );
+        res.send(JSON.stringify(account));
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
+
+app.post("/checkUser", async(req, res) => {
+    try {
+        const { username, password } = req.body;
+        console.log(username);
+        const validUser = await database.findUser(username, password);
+        console.log(validUser);
+        res.send(JSON.stringify(validUser));
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
+});
+
+app.put("/addtofavorites", async(req, res) => {
+    try {
+        const { username, favorite } = req.body;
+        const filter = await database.addToFavorites(username, favorite);
+        console.log(filter);
+        res.send(JSON.stringify(filter));
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
 });
 
 app.post("/getfavoritearray", async (req, res) => {
@@ -174,83 +196,82 @@ app.post("/getfavoritedestination", async (req, res) => {
   }
 });
 //update username
-app.put("/updatename", async(req,res) =>{
-  try{
-    const {_id, name} = req.body;
-    console.log({_id, name});
-    const account = await database.updateUserName(_id, name);
-    res.send(JSON.stringify(account));
-  }
-  catch(err){
-    res.status(500).send(err);
-  }
+app.put("/updatename", async(req, res) => {
+    try {
+        const { _id, name } = req.body;
+        console.log({ _id, name });
+        const account = await database.updateUserName(_id, name);
+        res.send(JSON.stringify(account));
+    } catch (err) {
+        res.status(500).send(err);
+    }
 });
 
 //update password
-app.put("/updatepassword", async(req,res)=>{
-  try{
-    const {_id, pass} =req.body;
-    console.log({_id, pass});
-    const account = await database.updateUserPassword(_id, pass);
-    res.send(JSON.stringify(account));
-  }
-  catch(err){
-    res.status(500).send(err);
-  }
+app.put("/updatepassword", async(req, res) => {
+    try {
+        const { _id, pass } = req.body;
+        console.log({ _id, pass });
+        const account = await database.updateUserPassword(_id, pass);
+        res.send(JSON.stringify(account));
+    } catch (err) {
+        res.status(500).send(err);
+    }
 });
 
 //update email
-app.put("/updatemail", async(req,res)=>{
-  try{
-    const {_id, email} =req.body;
-    console.log({_id, email});
-    const account = await database.updateUserEmail(_id, email);
-    res.send(JSON.stringify(account));
-  }
-  catch(err){
-    res.status(500).send(err);
-  }
+app.put("/updatemail", async(req, res) => {
+    try {
+        const { _id, email } = req.body;
+        console.log({ _id, email });
+        const account = await database.updateUserEmail(_id, email);
+        res.send(JSON.stringify(account));
+    } catch (err) {
+        res.status(500).send(err);
+    }
 });
 
-app.post("/getResults", async (req, res) => {
-  try {
-    const { region, season, weather, vacation_type } = req.body;
-    const filter = await database.getResults(region, season, weather, vacation_type);
-    res.send(filter);
-  } catch (err) {
-    console.log(err);
-    res.status(500).send(err);
-  }
+app.post("/getResults", async(req, res) => {
+    try {
+        const { region, season, weather, vacation_type } = req.body;
+        const filter = await database.getResults(
+            region,
+            season,
+            weather,
+            vacation_type
+        );
+        res.send(filter);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
 });
 
-app.put("/updatename", async(req,res) =>{
-  try{
-    const {_id, name} = req.body;
-    console.log({_id, name});
-    const account = await database.updateUserName(_id, name);
-    res.send(JSON.stringify(account));
-  }
-  catch(err){
-    res.status(500).send(err);
-  }
+app.put("/updatename", async(req, res) => {
+    try {
+        const { _id, name } = req.body;
+        console.log({ _id, name });
+        const account = await database.updateUserName(_id, name);
+        res.send(JSON.stringify(account));
+    } catch (err) {
+        res.status(500).send(err);
+    }
 });
 
-app.post("/saveFilter", async (req, res) => {
-  try {
-    const { region, season, weather, vacation_type } = req.body;
-    const filter = await database.saveFilter(
-      region,
-      season,
-      weather,
-      vacation_type
-    );
-    res.send(JSON.stringify(filter));
-  } catch (err) {
-    res.status(500).send(err);
-  }
+app.post("/saveFilter", async(req, res) => {
+    try {
+        const { region, season, weather, vacation_type } = req.body;
+        const filter = await database.saveFilter(
+            region,
+            season,
+            weather,
+            vacation_type
+        );
+        res.send(JSON.stringify(filter));
+    } catch (err) {
+        res.status(500).send(err);
+    }
 });
-
-
 
 // app.get("/client/destination", (req, res) => {
 //     res.send("Test");
@@ -271,11 +292,11 @@ app.post("/saveFilter", async (req, res) => {
 //   res.status(200).json({ status: "success" });
 // });
 
-app.all("*", async (request, response) => {
-  response.status(404).send(`Not found: ${request.path}`);
+app.all("*", async(request, response) => {
+    response.status(404).send(`Not found: ${request.path}`);
 });
 
 // Start the server on port 3000.
 app.listen(process.env.PORT || port, () => {
-  console.log(`Server started on http://localhost:${port}`);
+    console.log(`Server started on http://localhost:${port}`);
 });
