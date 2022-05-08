@@ -155,5 +155,32 @@ Darsh Gondalia:
   - Saving and checking login via mongoDB function
 - Most of the debugging and replacing of dysfunctional code
 
+- Manan Abbott:
+- Initial login page - Created the webpage
+- Contact us page - Created the webpage
+- Login.js - fixed error in functions
+- userProfile.html
+   -Added form for update name, update password and update email.
+- userProfile.js
+   -Created functionality for updating username, password and email on MongoDB.
+   -Created functionality to update username on favorites page.
+- Created Database.js
+   -Set up MongoClient
+   -createuser
+   -finduser
+   -updateUserName
+   -updateUserPassword
+   -updateUserEmail
+   -createDestination
+- Sign up page - Created the webpage
+- Contact.css - Styling for contact us page
+   -Index.js
+   -updatename
+   -updatepassword
+   -updatemail
+- Assisted in initializing Heroku and fixing Heroku errors
+- Authentication for login
+
+
 ## Conclusion
 - The team's experience was very positive. Each of us learned a lot about front-end and back-end development, and the connection between them. We learned how to work on a team, building our codebase off of other people and learning to use `git` in an intelligent manner. Before starting the project, it would have helped to know all of the different web programming concepts before. If we start a brand new project today, it would go a lot smoother because the connections of how everything works is significantly clearer now, but that is the point of the project. We ran into a few merge errors, a lot of H10 heroku errors, and some HTTP request failures. We encountered some difficulty being able to work as a unit because we had overlap in our work and ideas that led to some difference in opinions, but we were able to sort them out.
