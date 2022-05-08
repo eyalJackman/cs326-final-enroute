@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { MongoClient, ServerApiVersion } from "mongodb";
+import { MongoClient, ServerApiVersion, ObjectId } from "mongodb";
 //export class db
 //read, update, fetch, fetch with parameters functions
 
@@ -25,40 +25,55 @@ export class Database {
             this.client.close();
         }
         //add a new user
-    async createUser(username, password, fullname, email, phonenumber, favorites) {
-            const res = await this.collection_users.insertOne({ username, password, fullname, email, phonenumber, favorites });
+    async createUser(
+            username,
+            password,
+            fullname,
+            email,
+            phonenumber,
+            favorites
+        ) {
+            const res = await this.collection_users.insertOne({
+                username,
+                password,
+                fullname,
+                email,
+                phonenumber,
+                favorites,
+            });
             return res;
         }
         //read a user
     async findUser(username, password) {
-      console.log(username);
-        const res = await this.collection_users.find({ username, password }).toArray();
+        const res = await this.collection_users
+            .find({ username, password })
+            .toArray();
         return res;
     }
 
-  //save filter
-  async saveFilter(region, season, weather, vacationType) {
-    const res = await this.collection_filters.insertOne({
-      region,
-      season,
-      weather,
-      vacationType,
-    });
-    return res;
-  }
+    //save filter
+    async saveFilter(region, season, weather, vacationType) {
+        const res = await this.collection_filters.insertOne({
+            region,
+            season,
+            weather,
+            vacationType,
+        });
+        return res;
+    }
 
-  async getResults(region, season, weather, vacation_type) {
-    const arr = [];
-    const test = await this.collection_destinations
-      .find({
-        region,
-        season,
-        weather,
-        vacation_type,
-      })
-      .toArray();
-    return test;
-  }
+    async getResults(region, season, weather, vacation_type) {
+        const arr = [];
+        const test = await this.collection_destinations
+            .find({
+                region,
+                season,
+                weather,
+                vacation_type,
+            })
+            .toArray();
+        return test;
+    }
 
   async addToFavorites(username, favorite) {
     const res = await this.collection_users.updateOne(
@@ -71,25 +86,19 @@ export class Database {
 
     // // update user name
     async updateUserName(_id, name){
-        const res = await this.collection_users.updateOne(
-            {_id: _id }, {$set: {username: name}}
-        );
-        return res;
+      const res = await this.collection_users.update({_id: new ObjectId(_id) }, {$set: {username: name}});
+      return res;
     }
-    // // update user email
-    // async updateUserEmail(id, email){
-    //     const res = await this.collection_users.updateOne(
-    //         {_id: id }, {$set: {email: email}}
-    //     );
-    //     return res;
-    // }
-    // // update user password
-    // async updateUserPassword(id, password){
-    //     const res = await this.collection_users.updateOne(
-    //         {_id: id }, {$set: {password: password}}
-    //     );
-    //     return res;
-    // }
+    // update user email
+    async updateUserEmail(_id, email){
+      const res = await this.collection_users.update({_id: new ObjectId(_id) }, {$set: {email: email}});
+      return res;
+    }
+    // update user password
+    async updateUserPassword(_id, password){
+      const res = await this.collection_users.update({_id: new ObjectId(_id) }, {$set: {password: password}});
+      return res;
+    }
     // // delete a user
     // async deleteUser(id){
     //     const res = await this.collection_users.deleteOne({_id: id});
@@ -170,7 +179,7 @@ export class Database {
     //returns true or false (saved in a global variable 'login')
     //signup method, adds the users email and password to the users table in the database
 
-  //fetch search results method, "select * where region = region, season = season,
-  //weather = weather, vacationtype = vacationtype from destinations table",
-  //returns a list of objects with more information such as description, picture...
+    //fetch search results method, "select * where region = region, season = season,
+    //weather = weather, vacationtype = vacationtype from destinations table",
+    //returns a list of objects with more information such as description, picture...
 }

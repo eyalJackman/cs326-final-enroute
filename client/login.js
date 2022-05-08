@@ -38,6 +38,7 @@ if (loginButton) {
       return;
     } else {
       let userRequest = await userRequestFetch(username.value, password.value);
+      console.log(userRequest);
       if (userRequest) {
         localStorage.setItem("userid", username.value);
         console.log(userRequest);

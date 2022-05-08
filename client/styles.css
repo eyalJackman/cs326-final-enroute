@@ -1,24 +1,25 @@
 .header {
-  padding-left: 20px;
-  padding-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .footer,
 .header {
-  background-color: #2d394b;
+    background-color: #2d394b;
 }
 
 .account-icon {
-  text-align: center;
-  vertical-align: middle;
-  padding-right: 6px;
+    text-align: center;
+    vertical-align: middle;
+    padding-right: 6px;
 }
 
 .star {
-  padding-top: 5px;
-  padding-left: 28px;
-  padding-right: 18px;
+    padding-top: 5px;
+    padding-left: 28px;
+    padding-right: 18px;
 }
+
 
 /* .center{
     display: block;
@@ -28,203 +29,210 @@
 } */
 
 .card-row {
-  padding-left: 100px;
-  padding-right: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
 }
 
 .card-body {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  border: solid rgba(0, 0, 0, 0.15);
-  box-shadow: inset 0 0.5em 1.5em rgb(0 0 0 / 10%),
-    inset 0 0.125em 0.5em rgb(0 0 0 / 15%);
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    border: solid rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 0.5em 1.5em rgb(0 0 0 / 10%), inset 0 0.125em 0.5em rgb(0 0 0 / 15%);
 }
 
 .card-divider {
-  height: 3rem;
+    height: 3rem;
 }
 
 .card-star {
-  position: center;
-  left: 20px;
+    position: center;
+    left: 20px;
 }
 
 .card {
-  width: 100%;
+    width: 100%;
 }
 
 .pad-bottom-20 {
-  padding-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.hot_image {
+    width: 251px;
+    height: 201px;
+}
+
+#carouselExampleControls {
+    width: auto;
 }
 
 .material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-  /* Support for IE. */
-  font-feature-settings: "liga";
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: "liga";
 }
+
 
 /* Rules for sizing the icon. */
 
 .material-icons.md-18 {
-  font-size: 18px;
+    font-size: 18px;
 }
 
 .material-icons.md-24 {
-  font-size: 24px;
+    font-size: 24px;
 }
 
 .material-icons.md-36 {
-  font-size: 36px;
+    font-size: 36px;
 }
 
 .material-icons.md-40 {
-  font-size: 40px;
+    font-size: 40px;
 }
 
 .material-icons.md-48 {
-  font-size: 48px;
+    font-size: 48px;
 }
 
 .material-icons.md-large {
-  font-size: 250px;
+    font-size: 250px;
 }
+
 
 /* Rules for using icons as black on a light background. */
 
 .material-icons.md-dark {
-  color: rgba(0, 0, 0, 0.54);
+    color: rgba(0, 0, 0, 0.54);
 }
 
 .material-icons.md-dark.md-inactive {
-  color: rgba(0, 0, 0, 0.26);
+    color: rgba(0, 0, 0, 0.26);
 }
+
 
 /* Rules for using icons as white on a dark background. */
 
 .material-icons.md-light {
-  color: rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 1);
 }
 
 .material-icons.md-light.md-inactive {
-  color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.3);
 }
 
 @font-face {
-  font-family: "Material Icons";
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://example.com/MaterialIcons-Regular.eot);
-  /* For IE6-8 */
-  src: local("Material Icons"), local("MaterialIcons-Regular"),
-    url(https://example.com/MaterialIcons-Regular.woff2) format("woff2"),
-    url(https://example.com/MaterialIcons-Regular.woff) format("woff"),
-    url(https://example.com/MaterialIcons-Regular.ttf) format("truetype");
+    font-family: "Material Icons";
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://example.com/MaterialIcons-Regular.eot);
+    /* For IE6-8 */
+    src: local("Material Icons"), local("MaterialIcons-Regular"), url(https://example.com/MaterialIcons-Regular.woff2) format("woff2"), url(https://example.com/MaterialIcons-Regular.woff) format("woff"), url(https://example.com/MaterialIcons-Regular.ttf) format("truetype");
 }
 
 #filterBar {
-  padding-bottom: 20px;
+    padding-bottom: 20px;
 }
 
 .filter-child {
-  padding: 8px 20px;
-  color: #333333;
-  background-color: rgb(228, 222, 222);
-  border: 1px solid black;
-  cursor: pointer;
-  border-radius: 8px;
-  width: 250px;
-  /*Change the arrow */
+    padding: 8px 20px;
+    color: #333333;
+    background-color: rgb(228, 222, 222);
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 250px;
+    /*Change the arrow */
 }
 
 .filter-child:focus,
 .filter-child:hover {
-  color: rgb(228, 222, 222);
-  background-color: #333333;
-  outline: none;
-  border: 1px solid white;
+    color: rgb(228, 222, 222);
+    background-color: #333333;
+    outline: none;
+    border: 1px solid white;
 }
 
 .filter-child option {
-  background: azure;
+    background: azure;
 }
 
 .filters {
-  height: fit-content;
-  width: auto;
+    height: fit-content;
+    width: auto;
 }
 
 .search {
-  color: black;
-  background-color: aquamarine;
-  padding: 8px 15px;
-  border: 1px solid white;
-  border-radius: 8px;
+    color: black;
+    background-color: aquamarine;
+    padding: 8px 15px;
+    border: 1px solid white;
+    border-radius: 8px;
 }
 
 .search:hover {
-  background-color: blue;
+    background-color: blue;
 }
 
 .image {
-  width: 100px;
-  height: 100px;
+    width: 100px;
+    height: 100px;
 }
 
 .slideshow-container {
-  max-width: 700px;
-  position: relative;
-  margin: auto;
+    max-width: 700px;
+    position: relative;
+    margin: auto;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: auto;
+    display: grid;
+    grid-template-columns: auto;
 }
 
 .w-100 {
-  width: 100% !important;
-  height: 75vh;
+    width: 100% !important;
+    height: 75vh;
 }
 
 .carousel-caption-dark {
-  position: absolute;
-  right: 15%;
-  bottom: 20px;
-  left: 15%;
-  z-index: 10;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  text-align: center;
-  color: white;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000;
+    position: absolute;
+    right: 15%;
+    bottom: 20px;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 #logo_image {
-  width: 5vw;
+    width: 5vw;
 }
 
-up{
-  position: relative;
-  top: 3px;
-  left: 225px;
+up {
+    position: relative;
+    top: 3px;
+    left: 225px;
 }

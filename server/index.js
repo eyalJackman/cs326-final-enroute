@@ -150,6 +150,45 @@ app.put("/addtofavorites", async (req, res) => {
   }
 });
 
+//update username
+app.put("/updatename", async(req,res) =>{
+  try{
+    const {_id, name} = req.body;
+    console.log({_id, name});
+    const account = await database.updateUserName(_id, name);
+    res.send(JSON.stringify(account));
+  }
+  catch(err){
+    res.status(500).send(err);
+  }
+});
+
+//update password
+app.put("/updatepassword", async(req,res)=>{
+  try{
+    const {_id, pass} =req.body;
+    console.log({_id, pass});
+    const account = await database.updateUserPassword(_id, pass);
+    res.send(JSON.stringify(account));
+  }
+  catch(err){
+    res.status(500).send(err);
+  }
+});
+
+//update email
+app.put("/updatemail", async(req,res)=>{
+  try{
+    const {_id, email} =req.body;
+    console.log({_id, email});
+    const account = await database.updateUserEmail(_id, email);
+    res.send(JSON.stringify(account));
+  }
+  catch(err){
+    res.status(500).send(err);
+  }
+});
+
 app.post("/getResults", async (req, res) => {
   try {
     const { region, season, weather, vacation_type } = req.body;
