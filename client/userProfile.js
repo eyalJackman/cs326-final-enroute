@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 import { login } from "./login.js";
-=======
-// import {SearchResults} from "/searchResults.js";
-import { FavoriteRender } from "./favoriteRender.js";
->>>>>>> 080883d637f91f49dd9ce2a31051183dbeebbf6a
 const name_button = document.getElementById('ChangeName');
 const userid = localStorage.getItem("userid");
 
