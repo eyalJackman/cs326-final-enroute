@@ -78,29 +78,6 @@ async function addToFavorite(username, favorite) {
     }
     return response.json();
 }
-<<<<<<< HEAD
-if(addToFavoriteButton)
-addToFavoriteButton.addEventListener("click", async () => {
-//   console.log(login);
-//   console.log(user_information);
-  const parent = addToFavoriteButton.parentElement;
-  const children = parent.children;
-
-  // console.log(user_information["_id"]);
-  // https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_node_childnodes2  refer to this
-  // to understand the children
-  //parent div--> {h5, button, div}
-  // look up ways to get the html...
-  const username = localStorage.getItem("userid");
-  console.log(children[0].textContent);
-  const fav = children[0].textContent;
-  const favs = await addToFavorite(username, fav);
-  console.log(favs);
-  console.log("this work");
-
-});
-
-=======
 if (addToFavoriteButton) {
     addToFavoriteButton.addEventListener("click", async() => {
         //   console.log(login);
@@ -121,7 +98,6 @@ if (addToFavoriteButton) {
         console.log("this work");
     });
 }
->>>>>>> 48865c6b15fa47e6e9bbe247263aa920b875a6ac
 
 export default addDestination;
 export { getDescription };
