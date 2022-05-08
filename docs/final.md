@@ -155,7 +155,7 @@ Darsh Gondalia:
   - Saving and checking login via mongoDB function
 - Most of the debugging and replacing of dysfunctional code
 
-- Manan Abbott:
+Manan Abbott:
 - Initial login page - Created the webpage
 - Contact us page - Created the webpage
 - Login.js - fixed error in functions
