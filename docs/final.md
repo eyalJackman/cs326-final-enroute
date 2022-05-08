@@ -100,6 +100,8 @@ users document
 - `/contact` - Leads to the Contact Us page
 
 ### Authentication/Authorization
+- In order to register/sign up for an account, the user must go to `/register` and put in user information. This will send a request to the MongoDB database using an HTTP POST request and this would make sure that there was no existing user with the same username. If not, this will create an account with the given user information.
+- In order to sign in, the user must go to `signin` and put in their username and password. If this is correct (checking the MongoDB databse), they will be signed in. Otherwise, they will not be logged in.
 
 ### Division of Labor
 Eyal:
@@ -143,4 +145,4 @@ Simona Zilberberg:
 - Overall code clean up
 
 ## Conclusion
-
+- The team's experience was very positive. Each of us learned a lot about front-end and back-end development, and the connection between them. We learned how to work on a team, building our codebase off of other people and learning to use `git` in an intelligent manner. Before starting the project, it would have helped to know all of the different web programming concepts before. If we start a brand new project today, it would go a lot smoother because the connections of how everything works is significantly clearer now, but that is the point of the project. We ran into a few merge errors, a lot of H10 heroku errors, and some HTTP request failures. We encountered some difficulty being able to work as a unit because we had overlap in our work and ideas that led to some difference in opinions, but we were able to sort them out.
