@@ -76,7 +76,7 @@ async function addToFavorite(username, favorite) {
   }
   return response.json();
 }
-
+if(addToFavoriteButton)
 addToFavoriteButton.addEventListener("click", async () => {
 //   console.log(login);
 //   console.log(user_information);

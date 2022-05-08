@@ -1,5 +1,5 @@
-import {SearchResults} from "searchResults.js";
-
+// import {SearchResults} from "/searchResults.js";
+import { FavoriteRender } from "./favoriteRender.js";
 const name_button = document.getElementById('ChangeName');
 
 async function updateUserName(_id, name) {
@@ -52,7 +52,7 @@ async function updateUserEmail(_id, email) {
 
 
 const email_button = document.getElementById("ChangeEmail");
-
+if(email_button)
 email_button.addEventListener("click", async () =>{
     const new_email = document.getElementById("change_email");
     let email_req = await updateUserEmail(user_information._id, new_email.value);
@@ -67,7 +67,7 @@ email_button.addEventListener("click", async () =>{
 });
 
 const pass_button = document.getElementById("ChangePass");
-
+if(pass_button)
 pass_button.addEventListener("click", async () => {
     const new_pass = document.getElementById('change_pass');
     let pass_req = await updateUserPassword(user_information._id ,new_pass.value);
@@ -80,7 +80,7 @@ pass_button.addEventListener("click", async () => {
         alert('failed to update Password');
     }
 });
-
+if(name_button)
 name_button.addEventListener("click", async () => {
     const new_name = document.getElementById('change_name');
     let name_req = await updateUserName(user_information._id ,new_name.value);
@@ -97,12 +97,36 @@ name_button.addEventListener("click", async () => {
 
 // //get destinations by name returns an array of objects to be rendered
 
+async function getFavorites(username){
+    const data = JSON.stringify({username});
+    const response = await fetch('/getfavoritearray', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: data
+    });
+    return JSON.stringify(response);
+}
+function renderfavorites(array){
+    const favPlaces = document.getElementById("favoritesLoad");
+    const render = new FavoriteRender(array);
+    render.render(favPlaces);
+  }
+
+
 
 // //get the array
-// const user = localStorage.getItem("userid");
 
+const userbutton = document.getElementById("userprofile");
 
-
+if(userbutton)
+userbutton.addEventListener("click", async ()=>{
+    const user = localStorage.getItem("userid");
+    const arr = await getFavorites(user);
+    renderfavorites(arr);
+    console.log(arr);
+});
 // const favorite = JSON.parse(currFav);
 
 // const favoriteSection = document.getElementById("favoritesLoad");

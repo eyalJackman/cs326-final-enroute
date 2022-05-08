@@ -1,5 +1,6 @@
 import express from "express";
 import { Database } from "./database.js";
+// import { renderfavorites } from "../client/userProfile.js";
 import * as url from "url";
 // import logger from "morgan"
 
@@ -150,6 +151,28 @@ app.put("/addtofavorites", async (req, res) => {
   }
 });
 
+app.post("/getfavoritearray", async (req, res) => {
+  try {
+    const {username} = req.body;
+    const filter = await database.getFavoriteArray(username);
+    console.log(filter[0]['favorites']);
+    res.send(filter[0]['favorites']);
+  }catch(err){
+    console.log(err);
+    res.status(500).send(err);
+  }
+});
+
+app.post("/getfavoritedestination", async (req, res) => {
+  try {
+    const {name} = req.body;
+    const response = await database.getFavoriteDestination(name);
+    res.send(JSON.stringify(response));
+  }catch(err){
+    console.log(err);
+    res.status(500).send(err);
+  }
+});
 //update username
 app.put("/updatename", async(req,res) =>{
   try{
