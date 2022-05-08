@@ -1,9 +1,9 @@
-import {SearchResults} from "searchResults.js";
-
+import { login } from "./login.js";
 const name_button = document.getElementById('ChangeName');
+const userid = localStorage.getItem("userid");
 
-async function updateUserName(_id, name) {
-    const data = JSON.stringify({ _id, name });
+async function updateUserName(userid, name) {
+    const data = JSON.stringify({ userid, name });
     const response = await fetch("/updatename", {
         method: "PUT",
         headers: {
@@ -18,8 +18,8 @@ async function updateUserName(_id, name) {
     }
 }
 
-async function updateUserPassword(_id, pass) {
-    const data = JSON.stringify({ _id, pass });
+async function updateUserPassword(userid, pass) {
+    const data = JSON.stringify({ userid, pass });
     const response = await fetch("/updatepassword", {
         method: "PUT",
         headers: {
@@ -34,8 +34,8 @@ async function updateUserPassword(_id, pass) {
     }
 }
 
-async function updateUserEmail(_id, email) {
-    const data = JSON.stringify({ _id, email });
+async function updateUserEmail(userid, email) {
+    const data = JSON.stringify({ userid, email });
     const response = await fetch("/updatemail", {
         method: "PUT",
         headers: {
@@ -55,7 +55,7 @@ const email_button = document.getElementById("ChangeEmail");
 
 email_button.addEventListener("click", async () =>{
     const new_email = document.getElementById("change_email");
-    let email_req = await updateUserEmail(user_information._id, new_email.value);
+    let email_req = await updateUserEmail(userid, new_email.value);
     if(email_req){
         new_email.value = "";
         alert('Email updated');
@@ -70,7 +70,7 @@ const pass_button = document.getElementById("ChangePass");
 
 pass_button.addEventListener("click", async () => {
     const new_pass = document.getElementById('change_pass');
-    let pass_req = await updateUserPassword(user_information._id ,new_pass.value);
+    let pass_req = await updateUserPassword(userid ,new_pass.value);
     if(pass_req){
         new_pass.value = "";
         alert('Password updated');
@@ -81,10 +81,13 @@ pass_button.addEventListener("click", async () => {
     }
 });
 
+const name_label = document.getElementById('name_label');
+
 name_button.addEventListener("click", async () => {
     const new_name = document.getElementById('change_name');
-    let name_req = await updateUserName(user_information._id ,new_name.value);
+    let name_req = await updateUserName(userid ,new_name.value);
     if(name_req){
+        name_label.innerText = new_name.value;
         new_name.value = "";
         alert('Username updated');
         return;
@@ -94,25 +97,4 @@ name_button.addEventListener("click", async () => {
     }
 });
 
-
-// //get destinations by name returns an array of objects to be rendered
-
-
-// //get the array
-// const user = localStorage.getItem("userid");
-
-
-
-// const favorite = JSON.parse(currFav);
-
-// const favoriteSection = document.getElementById("favoritesLoad");
-
-// console.log(favorite);
-
-// const loadDestinations = (favorite) => {
-//   const results = new SearchResults(favorite);
-//   console.log(results);
-//   results.render(favoriteSection);
-// };
-
-// loadDestinations(favorite);
+name_label.innerText = userid;

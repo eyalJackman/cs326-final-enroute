@@ -50,7 +50,7 @@ if (loginButton) {
         user_information["id"] = userRequest["_id"];
         user_information["username"] = userRequest["username"];
         user_information["password"] = userRequest["password"];
-        localStorage.setItem("user_infromation", user_information);
+        localStorage.setItem("user_information", user_information);
         window.location.href = "./index.html";
         checkVisibility();
         return;

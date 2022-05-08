@@ -175,9 +175,9 @@ app.put("/addtofavorites", async(req, res) => {
 //update username
 app.put("/updatename", async(req, res) => {
     try {
-        const { _id, name } = req.body;
-        console.log({ _id, name });
-        const account = await database.updateUserName(_id, name);
+        const { userid, name } = req.body;
+        console.log({ userid, name });
+        const account = await database.updateUserName(userid, name);
         res.send(JSON.stringify(account));
     } catch (err) {
         res.status(500).send(err);
@@ -187,9 +187,9 @@ app.put("/updatename", async(req, res) => {
 //update password
 app.put("/updatepassword", async(req, res) => {
     try {
-        const { _id, pass } = req.body;
-        console.log({ _id, pass });
-        const account = await database.updateUserPassword(_id, pass);
+        const { userid, pass } = req.body;
+        console.log({ userid, pass });
+        const account = await database.updateUserPassword(userid, pass);
         res.send(JSON.stringify(account));
     } catch (err) {
         res.status(500).send(err);
@@ -199,9 +199,9 @@ app.put("/updatepassword", async(req, res) => {
 //update email
 app.put("/updatemail", async(req, res) => {
     try {
-        const { _id, email } = req.body;
-        console.log({ _id, email });
-        const account = await database.updateUserEmail(_id, email);
+        const { userid, email } = req.body;
+        console.log({ userid, email });
+        const account = await database.updateUserEmail(userid, email);
         res.send(JSON.stringify(account));
     } catch (err) {
         res.status(500).send(err);
@@ -220,17 +220,6 @@ app.post("/getResults", async(req, res) => {
         res.send(filter);
     } catch (err) {
         console.log(err);
-        res.status(500).send(err);
-    }
-});
-
-app.put("/updatename", async(req, res) => {
-    try {
-        const { _id, name } = req.body;
-        console.log({ _id, name });
-        const account = await database.updateUserName(_id, name);
-        res.send(JSON.stringify(account));
-    } catch (err) {
         res.status(500).send(err);
     }
 });

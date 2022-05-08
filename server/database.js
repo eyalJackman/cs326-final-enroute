@@ -85,18 +85,18 @@ export class Database {
   }
 
     // // update user name
-    async updateUserName(_id, name){
-      const res = await this.collection_users.update({_id: new ObjectId(_id) }, {$set: {username: name}});
+    async updateUserName(userid, name){
+      const res = await this.collection_users.update({username: userid }, {$set: {username: name}});
       return res;
     }
     // update user email
-    async updateUserEmail(_id, email){
-      const res = await this.collection_users.update({_id: new ObjectId(_id) }, {$set: {email: email}});
+    async updateUserEmail(userid, email){
+      const res = await this.collection_users.update({username: userid }, {$set: {email: email}});
       return res;
     }
     // update user password
-    async updateUserPassword(_id, password){
-      const res = await this.collection_users.update({_id: new ObjectId(_id) }, {$set: {password: password}});
+    async updateUserPassword(userid, password){
+      const res = await this.collection_users.update({username: userid }, {$set: {password: password}});
       return res;
     }
     // // delete a user
