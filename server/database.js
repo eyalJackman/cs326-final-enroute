@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { MongoClient, ServerApiVersion } from "mongodb";
+import { MongoClient, ServerApiVersion, ObjectId } from "mongodb";
 //export class db
 //read, update, fetch, fetch with parameters functions
 
@@ -69,27 +69,21 @@ export class Database {
         return res;
     }
 
-    // // update user name
-    // async updateUserName(id, name){
-    //     const res = await this.collection_users.updateOne(
-    //         {_id: id }, {$set: {name: name}}
-    //     );
-    //     return res;
-    // }
-    // // update user email
-    // async updateUserEmail(id, email){
-    //     const res = await this.collection_users.updateOne(
-    //         {_id: id }, {$set: {email: email}}
-    //     );
-    //     return res;
-    // }
-    // // update user password
-    // async updateUserPassword(id, password){
-    //     const res = await this.collection_users.updateOne(
-    //         {_id: id }, {$set: {password: password}}
-    //     );
-    //     return res;
-    // }
+    // update user name
+    async updateUserName(_id, name){
+      const res = await this.collection_users.update({_id: new ObjectId(_id) }, {$set: {username: name}});
+      return res;
+    }
+    // update user email
+    async updateUserEmail(_id, email){
+      const res = await this.collection_users.update({_id: new ObjectId(_id) }, {$set: {email: email}});
+      return res;
+    }
+    // update user password
+    async updateUserPassword(_id, password){
+      const res = await this.collection_users.update({_id: new ObjectId(_id) }, {$set: {password: password}});
+      return res;
+    }
     // // delete a user
     // async deleteUser(id){
     //     const res = await this.collection_users.deleteOne({_id: id});

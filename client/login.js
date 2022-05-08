@@ -17,7 +17,7 @@ async function userRequestFetch(username, password) {
   const response = await fetch("/checkUser", {
     method: "POST",
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/json",
     },
     body: data,
   });
@@ -39,6 +39,7 @@ if (loginButton) {
       return;
     } else {
       let userRequest = await userRequestFetch(username.value, password.value);
+      console.log(userRequest);
       if (userRequest) {
         localStorage.setItem("userid", username.value);
 

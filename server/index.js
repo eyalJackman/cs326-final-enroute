@@ -127,7 +127,8 @@ app.post("/createUser", async (req, res) => {
 
 app.post("/checkUser", async (req, res) => {
   try {
-    const {username, password} = JSON.parse(JSON.stringify(req.body));
+    const {username, password} = req.body;
+    console.log(username);
     const validUser = await database.findUser(username, password);
     // console.log(validUser);
     res.send(JSON.stringify(validUser));
@@ -140,10 +141,50 @@ app.post("/checkUser", async (req, res) => {
 app.post("/addtofavorites", async (req, res) => {
   try {
     const {_id, favorite} = req.body;
+    console.log(_id);
     const filter = await database.addToFavorites(_id, favorite);
     res.send(JSON.stringify(filter));
   }catch(err){
     console.log(err);
+    res.status(500).send(err);
+  }
+});
+
+//update username
+app.put("/updatename", async(req,res) =>{
+  try{
+    const {_id, name} = req.body;
+    console.log({_id, name});
+    const account = await database.updateUserName(_id, name);
+    res.send(JSON.stringify(account));
+  }
+  catch(err){
+    res.status(500).send(err);
+  }
+});
+
+//update password
+app.put("/updatepassword", async(req,res)=>{
+  try{
+    const {_id, pass} =req.body;
+    console.log({_id, pass});
+    const account = await database.updateUserPassword(_id, pass);
+    res.send(JSON.stringify(account));
+  }
+  catch(err){
+    res.status(500).send(err);
+  }
+});
+
+//update email
+app.put("/updatemail", async(req,res)=>{
+  try{
+    const {_id, email} =req.body;
+    console.log({_id, email});
+    const account = await database.updateUserEmail(_id, email);
+    res.send(JSON.stringify(account));
+  }
+  catch(err){
     res.status(500).send(err);
   }
 });
