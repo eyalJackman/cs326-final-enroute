@@ -170,6 +170,7 @@ app.put("/addtofavorites", async(req, res) => {
     }
 });
 
+
 app.post("/getfavoritearray", async (req, res) => {
   try {
     const {username} = req.body;
