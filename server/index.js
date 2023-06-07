@@ -88,10 +88,7 @@ import * as url from "url";
 
 const getDatabase = async() => {
     try {
-        // const database = new Database(process.env.MONGODB_URI);
-        const database = new Database(
-            "mongodb+srv://dgondalia:dgondalia@cluster0.db7at.mongodb.net/Clustor0?retryWrites=true&w=majority"
-        );
+        const database = new Database(process.env.MONGODB_URI);
         await database.connect();
         return database;
     } catch (err) {
