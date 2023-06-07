@@ -8,7 +8,7 @@
         "start": "node server/index.js"
     },
     "engines": {
-        "node": "14.17.0"
+        "node": "18.x"
     },
     "author": "COMPSCI 326",
     "license": "ISC",
