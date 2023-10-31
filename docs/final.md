@@ -104,7 +104,7 @@ users document
 - In order to sign in, the user must go to `signin` and put in their username and password. If this is correct (checking the MongoDB databse), they will be signed in. Otherwise, they will not be logged in.
 
 ### Division of Labor
-Eyal:
+Eyal Jackman:
 - Ideas.md
 - Initial index.html
 - Destination Page (`destination.html`, `destinationView.js`, `destination.css`) using Mock Database initially (then MongoDB)
